@@ -13,11 +13,8 @@ module.exports = {
   devtool: 'inline-source-map',
   module: {
     rules: [
-      {
-        test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
+      { exclude: ['node_modules'], loader: 'babel', test: /\.ts?$/ },
+      { test: /\.ts$/, use: 'ts-loader', exclude: /node_modules/ },
       {
         test: /\.s[ac]ss$/i,
         use: [

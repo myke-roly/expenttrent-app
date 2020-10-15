@@ -14,3 +14,25 @@
 body {
   background: var(--primary);
 }
+
+.app {
+  max-width: 800px;
+  margin: auto;
+
+  header {
+    width: 100%;
+  }
+
+  .links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    li {
+      padding: 1rem 2rem;
+      color: var(--dark);
+    }
+  }
+}

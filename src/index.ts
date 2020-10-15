@@ -1,6 +1,6 @@
 import './styles';
 
-import Component from './ts/components';
+import Component from './components/components';
 
 function createTitle(text: string) {
   const app = document.querySelector('.app') as HTMLElement;
@@ -10,4 +10,4 @@ function createTitle(text: string) {
   app.append(title);
 }
 
-createTitle('Todo app!');
+// createTitle('Todo app!');

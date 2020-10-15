@@ -6,8 +6,8 @@
     "target": "ES5",
     "jsx": "react",
     "allowJs": true,
-    "sourceMap": true
-
+    "sourceMap": true,
+    "esModuleInterop": true,
   },
   "exclude": [
     "node_modules"
