@@ -1,0 +1,16 @@
+:root {
+  --primary: #fffeee;
+  --dark: #445544;
+
+  --radius-input: 4px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--primary);
+}
