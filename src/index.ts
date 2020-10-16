@@ -1,13 +1,16 @@
 import './styles';
 
-import Component from './components/components';
+import firebase from 'firebase';
 
-function createTitle(text: string) {
-  const app = document.querySelector('.app') as HTMLElement;
-  const props = { elem: 'h1', className: 'app__title', children: text };
-  const title = Component(props);
+function singIn(): void {
+  const email = document.querySelector('#name') as HTMLElement,
+    password = document.querySelector('#password') as HTMLElement,
+    btn = document.querySelector('.btn-singin') as HTMLElement;
 
-  app.append(title);
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    firebase.singIn(email.nodeValue, password.nodeValue);
+  });
 }
 
-// createTitle('Todo app!');
+singIn();

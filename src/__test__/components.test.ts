@@ -1,4 +1,4 @@
-import Component from '../components/components';
+import Component from 'components/components';
 import '@testing-library/jest-dom';
 
 describe('return component', () => {
