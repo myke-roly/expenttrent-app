@@ -1,0 +1,45 @@
+[debug] [2020-10-17T02:35:25.279Z] ----------------------------------------------------------------------
+[debug] [2020-10-17T02:35:25.291Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2020-10-17T02:35:25.293Z] CLI Version:   8.12.1
+[debug] [2020-10-17T02:35:25.293Z] Platform:      linux
+[debug] [2020-10-17T02:35:25.293Z] Node Version:  v12.7.0
+[debug] [2020-10-17T02:35:25.294Z] Time:          Fri Oct 16 2020 23:35:25 GMT-0300 (Argentina Standard Time)
+[debug] [2020-10-17T02:35:25.294Z] ----------------------------------------------------------------------
+[debug] [2020-10-17T02:35:25.294Z] 
+[debug] [2020-10-17T02:35:25.360Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-10-17T02:35:25.361Z] > authorizing via signed-in user
+[debug] [2020-10-17T02:35:25.361Z] [iam] checking project todo-ts-234c9 for permissions ["firebase.projects.get"]
+[debug] [2020-10-17T02:35:25.367Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-10-17T02:35:25.368Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-10-17T02:35:25.572Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sat, 17 Oct 2020 02:35:25 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-17T02:35:25.636Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/todo-ts-234c9:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2020-10-17T02:35:26.699Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 17 Oct 2020 02:35:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=963","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-17T02:35:26.704Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/todo-ts-234c9  
+ 
+[debug] [2020-10-17T02:35:27.660Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Sat, 17 Oct 2020 02:35:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Serving from '/home/mike/Desktop/ts-todo-with-testing'...
+[info] 
+[debug] [2020-10-17T02:35:27.678Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/todo-ts-234c9/webApps/-/config  
+ 
+[debug] [2020-10-17T02:35:27.806Z] TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received type undefined
+    at validateString (internal/validators.js:107:11)
+    at Object.join (path.js:1037:7)
+    at Object.<anonymous> (/usr/local/lib/node_modules/firebase-tools/lib/serve/functions.js:22:39)
+    at Generator.next (<anonymous>)
+    at /usr/local/lib/node_modules/firebase-tools/lib/serve/functions.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/usr/local/lib/node_modules/firebase-tools/lib/serve/functions.js:4:12)
+    at Object.start (/usr/local/lib/node_modules/firebase-tools/lib/serve/functions.js:20:16)
+    at /usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:24:40
+    at arrayMap (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:639:23)
+    at Function.map (/usr/local/lib/node_modules/firebase-tools/node_modules/lodash/lodash.js:9580:14)
+    at /usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:23:29
+    at Generator.next (<anonymous>)
+    at /usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:8:71
+    at new Promise (<anonymous>)
+    at __awaiter (/usr/local/lib/node_modules/firebase-tools/lib/serve/index.js:4:12)
+[error] 
+[error] Error: An unexpected error has occurred.

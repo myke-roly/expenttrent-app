@@ -7,15 +7,44 @@
     <link rel="stylesheet" />
   </head>
   <body>
-    <div class="app">
-      <h1>Todo Firebase!</h1>
-      <form>
-        <input type="email" id="email" required />
-        <input type="password" id="password" required />
-        <button type="submit" class="btn-singin">Iniciar Sesion</button>
-      </form>
-    </div>
+    <div class="root">
+      <div class="login">
+        <form class="login__form">
+          <section class="login__input">
+            <input type="email" id="email" required />
+          </section>
+          <section class="login__input">
+            <input type="password" id="password" required />
+          </section>
+          <button type="submit" class="login__input">Iniciar Sesion</button>
+          <p>Crear una cuenta</p>
+        </form>
+      </div>
 
-    <script src="./src/js/index.js"></script>
+      <div class="app">
+        <header class="header">
+          <div class="header__top">
+            <h1 class="header__title">TODO APP/FIREBASE</h1>
+            <div class="header__search">
+              <input type="text" />
+              <button>search</button>
+            </div>
+          </div>
+
+          <nav class="header__navbar">
+            <ul class="links">
+              <li class="link">Inicio</li>
+              <li class="link">Todos</li>
+              <li class="link">Importantes</li>
+              <li class="link">+</li>
+            </ul>
+          </nav>
+        </header>
+
+        <main></main>
+      </div>
+
+      <button class="logout">Cerrar sesion</button>
+    </div>
   </body>
 </html>

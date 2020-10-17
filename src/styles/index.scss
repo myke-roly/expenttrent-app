@@ -1,6 +1,7 @@
 :root {
   --primary: #fffeee;
   --dark: #445544;
+  --grey: #EDEDED;
 
   --radius-input: 4px;
 }
@@ -12,15 +13,24 @@
 }
 
 body {
-  background: var(--primary);
+  background: var(--grey);
 }
 
-.app {
-  max-width: 800px;
+.root {
+  min-height: 100vh;
+  padding: 50px;
+  width: 90%;
+  max-width: 920px;
   margin: auto;
+  background: var(--primary);
 
-  header {
+  .header {
     width: 100%;
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   .links {

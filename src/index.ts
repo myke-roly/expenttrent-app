@@ -1,16 +1,34 @@
 import './styles';
+import { firebase } from './firebase';
+import { user } from './user';
 
-import firebase from 'firebase';
+user.authentication();
+setInterval(() => {
+  if (user.isAuth) {
+    // TODO redireccionar a la pagina principal o cerrar modal
+    console.log('user authenticated');
+  }
+}, 1000);
 
-function singIn(): void {
-  const email = document.querySelector('#name') as HTMLElement,
-    password = document.querySelector('#password') as HTMLElement,
-    btn = document.querySelector('.btn-singin') as HTMLElement;
+/**
+ * Variables
+ */
+const form = document.querySelector('form');
 
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    firebase.singIn(email.nodeValue, password.nodeValue);
-  });
+function getValuesInputs() {
+  const email = document.querySelector('#email') as HTMLInputElement,
+    password = document.querySelector('#password') as HTMLInputElement;
+
+  return { email: email.value, password: password.value };
 }
 
-singIn();
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const { email, password } = getValuesInputs();
+  const s = firebase.singIn(email, password);
+  s.then((d) => console.log(d));
+});
+
+document.querySelector('.logout').addEventListener('click', () => {
+  firebase.logout();
+});

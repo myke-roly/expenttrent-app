@@ -1,20 +1,22 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
-const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
   entry: './src/index.ts',
   output: {
-    filename: 'main.js',
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   devtool: 'inline-source-map',
   module: {
     rules: [
-      { exclude: ['node_modules'], loader: 'babel', test: /\.ts?$/ },
-      { test: /\.ts$/, use: 'ts-loader' },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+        include: [path.resolve(__dirname, 'src')],
+      },
       {
         test: /\.s[ac]ss$/i,
         use: [
@@ -33,10 +35,6 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({ template: './src/index.html' }),
-    new MiniCssExtractPlugin({
-      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
-    }),
   ],
   resolve: {
     extensions: ['.ts', '.js', '.tsx', '.scss', '.css'],
