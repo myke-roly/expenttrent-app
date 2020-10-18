@@ -7,16 +7,30 @@ const form = document.querySelector('form');
 const login = document.querySelector('.login');
 
 user.authentication();
-setTimeout(() => {
-  if (user.isAuth) {
-    console.log();
-    if (login.getAttribute('class') !== 'login hidden') {
-      console.log(login);
+
+const userData = new Promise((resolve, reject) => {
+  setInterval(() => {
+    if (user.isAuth) {
+      resolve(user.getUserData());
       login.classList.add('hidden');
+      console.log('user authenticated');
+    } else {
+      reject('no esta logueado');
     }
-    console.log('user authenticated');
-  }
-}, 1000);
+  }, 1000);
+});
+
+interface IRes {
+  email: string;
+}
+
+userData
+  .then((res: IRes) => {
+    console.log(res?.email);
+    const user = document.querySelector('.user');
+    // user.textContent = res?.email;
+  })
+  .catch((err) => console.log(err));
 
 /**
  * Form Login
@@ -32,10 +46,14 @@ function getValuesInputs() {
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const { email, password } = getValuesInputs();
-  const s = firebase.singIn(email, password);
-  s.then((d) => console.log(d));
+  firebase.singIn(email, password);
+
+  form.reset();
 });
 
+/**
+ * Print User data
+ */
 document.querySelector('.logout').addEventListener('click', () => {
   firebase.logout();
 });

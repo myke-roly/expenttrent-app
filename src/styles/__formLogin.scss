@@ -69,12 +69,19 @@
   }
 
   &__link {
-    float: right;
     color: #055481;
-    font-size: .95em;
+    font-size: .8em;
+    display: inline-block;
 
     &:hover {
       border-bottom: 1px solid #055481;
     }
+  }
+
+  &__error {
+    color: rgb(209, 73, 73);
+    text-align: center;
+    font-size: .7em;
+    margin: .5rem 0;
   }
 }

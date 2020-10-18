@@ -2,8 +2,9 @@ import firebase from '../firebase/firebase';
 
 class User {
   public isAuth: boolean;
+  public userData;
   constructor() {
-    this.isAuth = false;
+    this.userData = firebase.auth.currentUser;
   }
 
   authentication() {
@@ -18,7 +19,10 @@ class User {
     });
   }
 
-  private getUserDat() {}
+  getUserData() {
+    const user = firebase.auth.currentUser;
+    return user;
+  }
 }
 
 export const user = new User();
