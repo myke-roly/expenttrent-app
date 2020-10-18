@@ -1,20 +1,6 @@
-:root {
-  --primary: #fffeee;
-  --dark: #445544;
-  --grey: #EDEDED;
-
-  --radius-input: 4px;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: var(--grey);
-}
+@import "./__var";
+@import "./__base";
+@import "./_formLogin";
 
 .root {
   min-height: 100vh;

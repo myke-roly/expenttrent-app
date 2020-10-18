@@ -3,21 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- GOOGLE FONTS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Todo Firebase</title>
-    <link rel="stylesheet" />
   </head>
   <body>
     <div class="root">
       <div class="login">
         <form class="login__form">
+          <h2 class="login__title">Iniciar Sesion</h2>
+          <p class="login__desc">
+            Bienvenido a TodoFire. Con esta app podras saber cuales son tus
+            gastos y tener mejor control de tus finanzas.
+          </p>
           <section class="login__input">
-            <input type="email" id="email" required />
+            <input
+              type="email"
+              id="email"
+              placeholder="Ingrese su email"
+              required
+            />
           </section>
           <section class="login__input">
-            <input type="password" id="password" required />
+            <input
+              type="password"
+              id="password"
+              placeholder="Ingrese su contraseña"
+              required
+            />
           </section>
-          <button type="submit" class="login__input">Iniciar Sesion</button>
-          <p>Crear una cuenta</p>
+          <button type="submit" class="login__btn">Iniciar Sesion</button>
+          <a href="#" class="login__link">Crear una cuenta</a>
         </form>
       </div>
 

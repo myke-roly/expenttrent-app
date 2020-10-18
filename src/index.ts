@@ -2,18 +2,25 @@ import './styles';
 import { firebase } from './firebase';
 import { user } from './user';
 
+const root = document.querySelector('.root');
+const form = document.querySelector('form');
+const login = document.querySelector('.login');
+
 user.authentication();
-setInterval(() => {
+setTimeout(() => {
   if (user.isAuth) {
-    // TODO redireccionar a la pagina principal o cerrar modal
+    console.log();
+    if (login.getAttribute('class') !== 'login hidden') {
+      console.log(login);
+      login.classList.add('hidden');
+    }
     console.log('user authenticated');
   }
 }, 1000);
 
 /**
- * Variables
+ * Form Login
  */
-const form = document.querySelector('form');
 
 function getValuesInputs() {
   const email = document.querySelector('#email') as HTMLInputElement,

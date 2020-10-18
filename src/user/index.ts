@@ -17,6 +17,8 @@ class User {
       localStorage.setItem('auth__task', user?.l);
     });
   }
+
+  private getUserDat() {}
 }
 
 export const user = new User();
