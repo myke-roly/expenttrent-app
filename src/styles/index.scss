@@ -1,34 +1,13 @@
 @import "./__var";
 @import "./__base";
 @import "./_formLogin";
+@import "./_header";
 
 .root {
   min-height: 100vh;
-  padding: 50px;
-  width: 90%;
+  padding: 75px;
+  width: 85%;
   max-width: 920px;
   margin: auto;
   background: var(--primary);
-
-  .header {
-    width: 100%;
-
-    &__top {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-  .links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1rem;
-
-    li {
-      padding: 1rem 2rem;
-      color: var(--dark);
-    }
-  }
 }

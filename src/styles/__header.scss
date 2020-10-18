@@ -1,0 +1,37 @@
+.header {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #474747;
+  }
+
+  &__search {
+    background: 0;
+  }
+
+  &__navbar {
+    margin: 2.5rem 0;
+
+    .links {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 2px solid #bebebe;
+
+      .link {
+        margin-right: 2rem;
+        color: #b4b4b4;
+      }
+    }
+  }
+
+}

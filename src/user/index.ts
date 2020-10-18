@@ -20,8 +20,7 @@ class User {
   }
 
   getUserData() {
-    const user = firebase.auth.currentUser;
-    return user;
+    return firebase.auth.currentUser;
   }
 }
 
