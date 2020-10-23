@@ -55,11 +55,42 @@
               <li class="link active">Inicio</li>
               <li class="link">Todos</li>
               <li class="link">Importantes</li>
-              <li class="link">+</li>
+              <li class="link"><button class="add">+</button></li>
             </ul>
           </nav>
         </header>
 
+        <div class="add">
+          <form class="add__form">
+            <h2 class="add__title">Nuevo Gasto</h2>
+            <p class="add__desc">
+              Ingresa un nuevo gasto con la informacion necesaria.
+            </p>
+            <section class="add__input">
+              <select name="categories" id="">
+                <option value="">Alimentacion</option>
+                <option value="">Internet</option>
+                <option value="">Ropa</option>
+                <option value="">Alquiler</option>
+                <option value="">Otros</option>
+              </select>
+            </section>
+            <section class="add__input">
+              <input
+                type="description"
+                id="description"
+                placeholder="Ingrese una descripcion"
+                required
+              />
+            </section>
+            <section class="add__input row">
+              <input type="number" id="cant" placeholder="Cantidad" required />
+              <input type="number" id="price" placeholder="Precio" required />
+            </section>
+            <button type="submit" class="add__btn">Iniciar Sesion</button>
+            <a href="#" class="add__link">cancelar</a>
+          </form>
+        </div>
         <main></main>
       </div>
     </div>
