@@ -1,29 +1,35 @@
 import './styles';
 import { firebase } from './firebase';
 import { user } from './user';
-import { showFormAdd, hiddenFormAdd } from './components/FormCreate';
+import {
+  showFormAdd,
+  hiddenFormAdd,
+  getValuesAddForm,
+} from './components/FormCreate';
+import { data } from './firebase/firebase';
 
-const root = document.querySelector('.root');
-const form = document.querySelector('form');
+const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login');
+
+const formAdd = document.querySelector('.add__form') as HTMLFormElement;
 const btnAdd = document.querySelector('.btn__add');
 const cancelAdd = document.querySelector('.cancel__add');
 
-const stateAddForm = {
-  open: false,
-};
-
-btnAdd.addEventListener('click', () => {
-  // stateAddForm.open = true;
-  showFormAdd();
-});
-
+btnAdd.addEventListener('click', showFormAdd);
 cancelAdd.addEventListener('click', hiddenFormAdd);
+formAdd.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const { category, description, cant, price } = getValuesAddForm();
+  data.add({ category, description, cant, price, finalPrice: cant * price });
+
+  formAdd.reset();
+});
 
 user.authentication();
 
 const userData = new Promise((resolve, reject) => {
   setInterval(() => {
+    console.log(user.isAuth);
     if (user.isAuth) {
       resolve(user.getUserData());
       login.classList.add('form-hidden');
@@ -34,6 +40,7 @@ const userData = new Promise((resolve, reject) => {
   }, 1000);
 });
 
+//todo show or update info to the user
 interface IRes {
   email: string;
 }
@@ -57,12 +64,12 @@ function getValuesInputs() {
   return { email: email.value, password: password.value };
 }
 
-form.addEventListener('submit', (e) => {
+formLogin.addEventListener('submit', (e) => {
   e.preventDefault();
   const { email, password } = getValuesInputs();
   firebase.singIn(email, password);
 
-  form.reset();
+  formLogin.reset();
 });
 
 /**
@@ -70,4 +77,5 @@ form.addEventListener('submit', (e) => {
  */
 document.querySelector('.logout').addEventListener('click', () => {
   firebase.logout();
+  login.classList.remove('form-hidden');
 });
