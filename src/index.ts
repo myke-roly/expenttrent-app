@@ -1,21 +1,24 @@
 import './styles';
 import { firebase } from './firebase';
 import { user } from './user';
-import { showForm } from './components/FormCreate';
+import { showFormAdd, hiddenFormAdd } from './components/FormCreate';
 
 const root = document.querySelector('.root');
 const form = document.querySelector('form');
 const login = document.querySelector('.login');
-const btnAdd = document.querySelector('.add');
+const btnAdd = document.querySelector('.btn__add');
+const cancelAdd = document.querySelector('.cancel__add');
 
-const stateForm = {
+const stateAddForm = {
   open: false,
 };
 
 btnAdd.addEventListener('click', () => {
-  stateForm.open = true;
-  showForm();
+  // stateAddForm.open = true;
+  showFormAdd();
 });
+
+cancelAdd.addEventListener('click', hiddenFormAdd);
 
 user.authentication();
 
@@ -23,7 +26,7 @@ const userData = new Promise((resolve, reject) => {
   setInterval(() => {
     if (user.isAuth) {
       resolve(user.getUserData());
-      login.classList.add('hidden');
+      login.classList.add('form-hidden');
       console.log('user authenticated');
     } else {
       reject('no esta logueado');

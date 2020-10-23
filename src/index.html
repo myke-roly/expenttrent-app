@@ -13,13 +13,13 @@
   <body>
     <div class="root">
       <div class="login">
-        <form class="login__form">
-          <h2 class="login__title">Iniciar Sesion</h2>
-          <p class="login__desc">
+        <form class="form login__form">
+          <h2 class="form__title">Iniciar Sesion</h2>
+          <p class="form__desc">
             Bienvenido a TodoFire. Con esta app podras saber cuales son tus
             gastos y tener mejor control de tus finanzas.
           </p>
-          <section class="login__input">
+          <section class="form__input">
             <input
               type="email"
               id="email"
@@ -27,7 +27,7 @@
               required
             />
           </section>
-          <section class="login__input">
+          <section class="form__input">
             <input
               type="password"
               id="password"
@@ -35,8 +35,8 @@
               required
             />
           </section>
-          <button type="submit" class="login__btn">Iniciar Sesion</button>
-          <a href="#" class="login__link">Crear una cuenta</a>
+          <button type="submit" class="form__btn">Iniciar Sesion</button>
+          <a href="#" class="form__link">Crear una cuenta</a>
         </form>
       </div>
 
@@ -55,18 +55,18 @@
               <li class="link active">Inicio</li>
               <li class="link">Todos</li>
               <li class="link">Importantes</li>
-              <li class="link"><button class="add">+</button></li>
+              <li class="link"><button class="btn__add">+</button></li>
             </ul>
           </nav>
         </header>
 
         <div class="add">
-          <form class="add__form">
-            <h2 class="add__title">Nuevo Gasto</h2>
-            <p class="add__desc">
+          <form class="form add__form">
+            <h2 class="form__title">Nuevo Gasto</h2>
+            <p class="form__desc">
               Ingresa un nuevo gasto con la informacion necesaria.
             </p>
-            <section class="add__input">
+            <section class="form__input">
               <select name="categories" id="">
                 <option value="">Alimentacion</option>
                 <option value="">Internet</option>
@@ -75,7 +75,7 @@
                 <option value="">Otros</option>
               </select>
             </section>
-            <section class="add__input">
+            <section class="form__input">
               <input
                 type="description"
                 id="description"
@@ -83,12 +83,12 @@
                 required
               />
             </section>
-            <section class="add__input row">
+            <section class="form__input row">
               <input type="number" id="cant" placeholder="Cantidad" required />
               <input type="number" id="price" placeholder="Precio" required />
             </section>
-            <button type="submit" class="add__btn">Iniciar Sesion</button>
-            <a href="#" class="add__link">cancelar</a>
+            <button type="submit" class="form__btn">Nuevo Gasto</button>
+            <a href="#" class="form__link cancel__add">cancelar</a>
           </form>
         </div>
         <main></main>

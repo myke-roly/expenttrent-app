@@ -1,0 +1,27 @@
+@import "./_animations";
+
+@keyframes down {
+  from {
+    transform: translateY(-50%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.add {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(68, 68, 68, 0.404);
+  display: none;
+  animation: down .3s ease;
+
+  .row {
+    display: flex;
+    gap: .5rem;
+  }
+}
