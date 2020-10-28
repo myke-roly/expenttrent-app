@@ -1,7 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-import { showTemporalErrorMessage } from '../helpers/messageError';
+import UI from '../UI/listGasto';
 import { firebaseConfig } from './config';
 
 app.initializeApp(firebaseConfig);
@@ -18,7 +18,7 @@ export class Firebase {
 class Users extends Firebase {
   singIn(email: string, password: string) {
     this.auth.signInWithEmailAndPassword(email, password).catch((err) => {
-      showTemporalErrorMessage(err?.message);
+      UI.showTemporalErrorMessage(err?.message);
     });
   }
 

@@ -1,11 +1,7 @@
 import './styles';
 import { firebase } from './firebase';
-import { user } from './user';
-import {
-  showFormAdd,
-  hiddenFormAdd,
-  getValuesAddForm,
-} from './components/FormCreate';
+import { user } from './firebase/user';
+import { showFormAdd, hiddenFormAdd, getValuesAddForm } from './components/FormCreate';
 import { data } from './firebase/firebase';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
