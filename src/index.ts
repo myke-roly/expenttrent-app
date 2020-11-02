@@ -3,6 +3,7 @@ import { firebase } from './firebase';
 import { user } from './firebase/user';
 import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/Gasto/formAdd';
 import { data } from './firebase/firebase';
+import { showList } from './components/Gasto/listItems';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login');
@@ -30,11 +31,20 @@ new Promise((resolve, reject) => {
   displayEmail.innerText = res?.email;
 });
 
-data.getGastos().then((res) => console.log(res));
-//todo show or update info to the user
-/**
- * Form Login
- */
+//
+// ─── DISPLAY LIST ELEMTS ────────────────────────────────────────────────────────
+//
+
+const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
+window.addEventListener('load', () => {
+  data.getGastos().then((res) => {
+    showList(res, displayListGastos);
+  });
+});
+
+//
+// ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
+//
 
 function getValuesInputs() {
   const email = document.querySelector('#email') as HTMLInputElement,
