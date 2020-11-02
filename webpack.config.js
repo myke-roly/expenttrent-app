@@ -38,6 +38,6 @@ module.exports = {
   },
   plugins: [new webpack.ProgressPlugin(), new HtmlWebpackPlugin({ template: './src/index.html' })],
   resolve: {
-    extensions: ['.ts', '.js', '.tsx', '.scss', '.css'],
+    extensions: ['.ts', '.js', '.tsx', '.scss', '.css', '.svg', '.png', '.jpg'],
   },
 };
