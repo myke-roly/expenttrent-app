@@ -1,7 +1,7 @@
 import './styles';
 import { firebase } from './firebase';
 import { user } from './firebase/user';
-import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/FormAddGasto';
+import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/Gasto/formAdd';
 import { data } from './firebase/firebase';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
@@ -26,11 +26,11 @@ new Promise((resolve, reject) => {
     }
   }, 2000);
 }).then((res: any) => {
-  data.getGastos().then((res) => console.log(res));
   const displayEmail = document.querySelector('.user') as HTMLElement;
   displayEmail.innerText = res?.email;
 });
 
+data.getGastos().then((res) => console.log(res));
 //todo show or update info to the user
 /**
  * Form Login
