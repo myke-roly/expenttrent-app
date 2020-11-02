@@ -53,6 +53,10 @@
     font-size: 1rem;
     margin: 1rem 0;
     padding: .7rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
   }
 
   &__link {

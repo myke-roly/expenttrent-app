@@ -1,20 +1,32 @@
+import { hiddenLoadinng, showLoading } from '../__shared/Loading';
 import { data } from '../../firebase/firebase';
-import { DataFormAddGastoI, StateFormAddI } from './interface';
 
 const elemAddGasto = document.querySelector('.add-gasto');
+const btn = document.querySelector('.btn__add') as HTMLButtonElement;
+const btnAddGasto = document.querySelector('.btn__addgasto') as HTMLButtonElement;
 
-const initialState: StateFormAddI = {
-  data: null,
-  error: false,
-  loading: false,
-};
+export interface DataFormAddGastoI {
+  description: string;
+  category: string;
+  cant: number;
+  price: number;
+}
+
+// const initialState: StateFormAddI = {
+//   data: null,
+//   error: false,
+//   loading: false,
+// };
 
 export function addNewGasto(e: Event): void {
   e.preventDefault();
   const { category, description, cant, price } = getValuesAddFormGasto();
   data.add({ category, description, cant, price, finalPrice: cant * price });
+  showLoading(btnAddGasto);
 
   setTimeout(() => {
+    hiddenLoadinng();
+    // TODO: validar que se guardaron los datos correcatamente
     hiddenFormAddGasto();
   }, 2500);
 }
