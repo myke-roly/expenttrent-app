@@ -1,0 +1,31 @@
+.list__gastos {
+  width: 100%;
+  min-height: 50vh;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .7rem 1rem;
+    background: white;
+    margin: 1.5rem 0;
+    border-radius: 5px;
+    color: #444;
+
+    h2 {
+      font-size: 1em;
+      font-weight: 400;
+      display: flex;
+      justify-self: center;
+      align-items: center;
+    }
+
+    img {
+      margin-right: 1rem;
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+}

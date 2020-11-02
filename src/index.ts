@@ -4,7 +4,10 @@ import { user } from './firebase/user';
 import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/Gasto/formAdd';
 import { data } from './firebase/firebase';
 import { showList } from './components/Gasto/listItems';
+// const Img = require('./assets/alimentacion.png');
+import Img from './assets/alimentacion.png';
 
+console.log(Img);
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login');
 
@@ -29,14 +32,10 @@ new Promise((resolve, reject) => {
 }).then((res: any) => {
   const displayEmail = document.querySelector('.user') as HTMLElement;
   displayEmail.innerText = res?.email;
-});
-
-//
-// ─── DISPLAY LIST ELEMTS ────────────────────────────────────────────────────────
-//
-
-const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
-window.addEventListener('load', () => {
+  //
+  // ─── DISPLAY LIST ELEMTS ────────────────────────────────────────────────────────
+  //
+  const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
   data.getGastos().then((res) => {
     showList(res, displayListGastos);
   });
