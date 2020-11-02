@@ -30,12 +30,13 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        use: ['file-loader'],
+      },
     ],
   },
-  plugins: [
-    new webpack.ProgressPlugin(),
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
-  ],
+  plugins: [new webpack.ProgressPlugin(), new HtmlWebpackPlugin({ template: './src/index.html' })],
   resolve: {
     extensions: ['.ts', '.js', '.tsx', '.scss', '.css'],
   },
