@@ -7,9 +7,15 @@
 
 .root {
   min-height: 100vh;
-  padding: 75px;
-  width: 85%;
   max-width: 920px;
   margin: auto;
   background: var(--primary);
+}
+
+.hidden-elem {
+  display: none !important;
+}
+
+.show-elem {
+  display: block !important;
 }

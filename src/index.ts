@@ -1,54 +1,47 @@
 import './styles';
 import { firebase } from './firebase';
 import { user } from './firebase/user';
-import { showFormAdd, hiddenFormAdd, getValuesAddForm } from './components/FormCreate';
+import { getValuesAddFormGasto, showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/FormAddGasto';
 import { data } from './firebase/firebase';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login');
 
-const formAdd = document.querySelector('.add__form') as HTMLFormElement;
-const btnAdd = document.querySelector('.btn__add');
-const cancelAdd = document.querySelector('.cancel__add');
+const formAddNewGasto = document.querySelector('.form__add-gasto') as HTMLFormElement;
+const cancel = document.querySelector('.cancel__add');
+const add = document.querySelector('.btn__add');
 
-btnAdd.addEventListener('click', showFormAdd);
-cancelAdd.addEventListener('click', hiddenFormAdd);
-formAdd.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const { category, description, cant, price } = getValuesAddForm();
-  data.add({ category, description, cant, price, finalPrice: cant * price });
+add.addEventListener('click', showFormAddGasto);
+cancel.addEventListener('click', hiddenFormAddGasto);
+formAddNewGasto.addEventListener('submit', addNewGasto);
 
-  formAdd.reset();
-});
+// function addNewGasto(e: Event): void {
+//   e.preventDefault();
+//   const { category, description, cant, price } = getValuesAddFormGasto();
+//   data.add({ category, description, cant, price, finalPrice: cant * price });
+
+//   formAddNewGasto.reset();
+//   formAddNewGasto.classList.remove('form-hidden');
+// }
 
 user.authentication();
 
-const userData = new Promise((resolve, reject) => {
-  setInterval(() => {
-    console.log(user.isAuth);
+new Promise((resolve, reject) => {
+  setTimeout(() => {
     if (user.isAuth) {
+      login.classList.add('hidden-elem');
       resolve(user.getUserData());
-      login.classList.add('form-hidden');
-      console.log('user authenticated');
-    } else {
-      reject('no esta logueado');
     }
-  }, 1000);
+  }, 2000);
+}).then((res: any) => {
+  const displayEmail = document.querySelector('.user') as HTMLElement;
+  displayEmail.innerText = res?.email;
 });
 
 //todo show or update info to the user
 interface IRes {
   email: string;
 }
-
-userData
-  .then((res: IRes) => {
-    console.log(res?.email);
-    const user = document.querySelector('.user');
-    user.textContent = res?.email;
-  })
-  .catch((err) => console.log(err));
-
 /**
  * Form Login
  */
@@ -64,6 +57,7 @@ formLogin.addEventListener('submit', (e) => {
   e.preventDefault();
   const { email, password } = getValuesInputs();
   firebase.singIn(email, password);
+  // todo: ocultar form si se loguea correctamente
 
   formLogin.reset();
 });

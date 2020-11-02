@@ -4,94 +4,74 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- GOOGLE FONTS -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet" />
     <title>Todo Firebase</title>
   </head>
   <body>
     <div class="root">
-      <div class="login">
-        <form class="form login__form">
-          <h2 class="form__title">Iniciar Sesion</h2>
-          <p class="form__desc">
-            Bienvenido a TodoFire. Con esta app podras saber cuales son tus
-            gastos y tener mejor control de tus finanzas.
-          </p>
-          <section class="form__input">
-            <input
-              type="email"
-              id="email"
-              placeholder="Ingrese su email"
-              required
-            />
-          </section>
-          <section class="form__input">
-            <input
-              type="password"
-              id="password"
-              placeholder="Ingrese su contraseña"
-              required
-            />
-          </section>
-          <button type="submit" class="form__btn">Iniciar Sesion</button>
-          <a href="#" class="form__link">Crear una cuenta</a>
-        </form>
-      </div>
-
-      <div class="app">
-        <header class="header">
-          <div class="header__top">
-            <h1 class="header__title">TODO APP/FIREBASE</h1>
-            <div class="header__search">
-              <input type="text" placeholder="Buscar..." />
-              <button class="logout">Cerrar sesion</button>
-            </div>
-          </div>
-
-          <nav class="header__navbar">
-            <ul class="links">
-              <li class="link active">Inicio</li>
-              <li class="link">Todos</li>
-              <li class="link">Importantes</li>
-              <li class="link"><button class="btn__add">+</button></li>
-            </ul>
-          </nav>
-        </header>
-
-        <div class="add">
-          <form class="form add__form">
-            <h2 class="form__title">Nuevo Gasto</h2>
-            <p class="form__desc">
-              Ingresa un nuevo gasto con la informacion necesaria.
-            </p>
+      <div class="container">
+        <div class="login">
+          <form class="form login__form">
+            <h2 class="form__title">Iniciar Sesion</h2>
+            <p class="form__desc">Bienvenido a TodoFire. Con esta app podras saber cuales son tus gastos y tener mejor control de tus finanzas.</p>
             <section class="form__input">
-              <select name="category" id="category">
-                <option value="alimentacion">Alimentacion</option>
-                <option value="internet">Internet</option>
-                <option value="ropa">Ropa</option>
-                <option value="alquiler">Alquiler</option>
-                <option value="otros">Otros</option>
-              </select>
+              <input type="email" id="email" placeholder="Ingrese su email" required />
             </section>
             <section class="form__input">
-              <input
-                type="description"
-                id="description"
-                placeholder="Ingrese una descripcion"
-                required
-              />
+              <input type="password" id="password" placeholder="Ingrese su contraseña" required />
             </section>
-            <section class="form__input row">
-              <input type="number" id="cant" placeholder="Cantidad" required />
-              <input type="number" id="price" placeholder="Precio" required />
-            </section>
-            <button type="submit" class="form__btn">Nuevo Gasto</button>
-            <a href="#" class="form__link cancel__add">cancelar</a>
+            <button type="submit" class="form__btn">Iniciar Sesion</button>
+            <a href="#" class="form__link">Crear una cuenta</a>
           </form>
         </div>
-        <main></main>
+
+        <div class="app">
+          <header class="header">
+            <div class="header__top">
+              <h1 class="header__title">TODO APP/FIREBASE</h1>
+              <div class="header__search">
+                <input type="text" placeholder="Buscar..." />
+                <button class="logout">Cerrar sesion</button>
+                <p class="user"></p>
+              </div>
+            </div>
+
+            <nav class="header__navbar">
+              <ul class="links">
+                <li class="link active">Inicio</li>
+                <li class="link">Todos</li>
+                <li class="link">Importantes</li>
+                <li class="link"><button class="btn__add">+</button></li>
+              </ul>
+            </nav>
+          </header>
+
+          <div class="add-gasto">
+            <form class="form form__add-gasto">
+              <h2 class="form__title">Nuevo Gasto</h2>
+              <p class="form__desc">Ingresa un nuevo gasto con la informacion necesaria.</p>
+              <section class="form__input">
+                <select name="category" id="category">
+                  <option value="alimentacion">Alimentacion</option>
+                  <option value="internet">Internet</option>
+                  <option value="ropa">Ropa</option>
+                  <option value="alquiler">Alquiler</option>
+                  <option value="otros">Otros</option>
+                </select>
+              </section>
+              <section class="form__input">
+                <input type="description" id="description" placeholder="Ingrese una descripcion" required />
+              </section>
+              <section class="form__input row">
+                <input type="number" id="cant" placeholder="Cantidad" required />
+                <input type="number" id="price" placeholder="Precio" required />
+              </section>
+              <button type="submit" class="form__btn">Nuevo Gasto</button>
+              <a href="#" class="form__link cancel__add">cancelar</a>
+            </form>
+          </div>
+          <main></main>
+        </div>
       </div>
     </div>
   </body>

@@ -30,6 +30,10 @@ class Users extends Firebase {
     await this.auth.signOut();
     document.querySelector('.login').classList.remove('hidden');
   }
+
+  getUserData() {
+    return this.auth.currentUser;
+  }
 }
 
 interface ValuesFormAddI {
@@ -43,6 +47,18 @@ interface ValuesFormAddI {
 class DataBase extends Firebase {
   add(values: ValuesFormAddI) {
     this.database.ref('expences').set(values);
+  }
+
+  getGastos() {
+    let data: any[] = [];
+    this.database.ref(`/expences`).on(
+      'value',
+      (snapshot) => {
+        data.push(snapshot.val());
+      },
+      (error: any) => console.log(error),
+    );
+    return data;
   }
 }
 
