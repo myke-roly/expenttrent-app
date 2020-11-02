@@ -1,17 +1,17 @@
 import app from 'firebase/app';
 import 'firebase/auth';
-import 'firebase/database';
+import 'firebase/firestore';
 import UI from '../UI/listGasto';
 import { firebaseConfig } from './config';
 
 app.initializeApp(firebaseConfig);
 export class Firebase {
   public auth: firebase.auth.Auth;
-  public database: firebase.database.Database;
+  public db: firebase.firestore.Firestore;
 
   constructor() {
     this.auth = app.auth();
-    this.database = app.database();
+    this.db = app.firestore();
   }
 }
 
@@ -45,19 +45,23 @@ interface ValuesFormAddI {
 }
 
 class DataBase extends Firebase {
-  add(values: ValuesFormAddI) {
-    this.database.ref('expences').set(values);
+  async addNewGasto(values: ValuesFormAddI): Promise<any> {
+    const response = await this.db.collection('expences').add(values);
+    console.log(response);
   }
 
-  getGastos() {
+  async getGastos(): Promise<any> {
     let data: any[] = [];
-    this.database.ref(`/expences`).on(
-      'value',
-      (snapshot) => {
-        data.push(snapshot.val());
-      },
-      (error: any) => console.log(error),
-    );
+    await this.db
+      .collection('expences')
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((snap) => {
+          data = [...data, snap.data()];
+        });
+      })
+      .catch((error) => console.log(error));
+
     return data;
   }
 }

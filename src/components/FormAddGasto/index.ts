@@ -21,7 +21,7 @@ export interface DataFormAddGastoI {
 export function addNewGasto(e: Event): void {
   e.preventDefault();
   const { category, description, cant, price } = getValuesAddFormGasto();
-  data.add({ category, description, cant, price, finalPrice: cant * price });
+  data.addNewGasto({ category, description, cant, price, finalPrice: cant * price });
   showLoading(btnAddGasto);
 
   setTimeout(() => {
