@@ -6,6 +6,7 @@ import { data } from './firebase/firebase';
 import { showList } from './components/Gasto/listItems';
 // const Img = require('./assets/alimentacion.png');
 import Img from './assets/alimentacion.png';
+import { showFormLogin } from './components/Login';
 
 console.log(Img);
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
@@ -44,27 +45,12 @@ new Promise((resolve, reject) => {
 //
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
 //
-
-function getValuesInputs() {
-  const email = document.querySelector('#email') as HTMLInputElement,
-    password = document.querySelector('#password') as HTMLInputElement;
-
-  return { email: email.value, password: password.value };
-}
-
-formLogin.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const { email, password } = getValuesInputs();
-  firebase.singIn(email, password);
-  // todo: ocultar form si se loguea correctamente
-
-  formLogin.reset();
-});
+formLogin.addEventListener('submit', showFormLogin);
 
 /**
  * Print User data
  */
 document.querySelector('.logout').addEventListener('click', () => {
   firebase.logout();
-  login.classList.remove('form-hidden');
+  login.classList.remove('hidden-elem');
 });
