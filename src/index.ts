@@ -50,7 +50,9 @@ formLogin.addEventListener('submit', showFormLogin);
 /**
  * Print User data
  */
-document.querySelector('.logout').addEventListener('click', () => {
+document.querySelector('.logout').addEventListener('click', logOut);
+
+function logOut() {
   firebase.logout();
   login.classList.remove('hidden-elem');
-});
+}
