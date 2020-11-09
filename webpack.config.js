@@ -1,6 +1,7 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.ts',
@@ -18,17 +19,8 @@ module.exports = {
         include: [path.resolve(__dirname, 'src')],
       },
       {
-        test: /\.s[ac]ss$/i,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('node-sass'),
-            },
-          },
-        ],
+        test: /\.(sc|sa|c)ss$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(svg|png|jpg|gif)$/,
@@ -36,8 +28,14 @@ module.exports = {
       },
     ],
   },
-  plugins: [new webpack.ProgressPlugin(), new HtmlWebpackPlugin({ template: './src/index.html' })],
+  plugins: [
+    new webpack.ProgressPlugin(),
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new MiniCssExtractPlugin({
+      filename: 'maim.css',
+    }),
+  ],
   resolve: {
-    extensions: ['.ts', '.js', '.tsx', '.scss', '.css', '.svg', '.png', '.jpg'],
+    extensions: ['.ts', '.js', '.tsx', '.sass', '.scss', '.css', '.svg', '.png', '.jpg'],
   },
 };
