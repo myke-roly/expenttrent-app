@@ -1,4 +1,5 @@
 import { firebase } from '../../firebase';
+import { hiddenLoadinng, showLoading } from '../__shared/Loading';
 
 interface DataLoginI {
   email: string;
@@ -18,10 +19,14 @@ function getValuesInputs(): DataLoginI {
 }
 
 export function showFormLogin(e: Event): void {
+  const btnLogin = document.querySelector('.form__btn') as HTMLButtonElement;
   e.preventDefault();
   const { email, password } = getValuesInputs();
+  showLoading(btnLogin);
   firebase.singIn(email, password);
 
-  // TODO: validar que no hay error;
-  login.classList.add('hidden-elem');
+  setTimeout(() => {
+    hiddenLoadinng();
+    login.classList.add('hidden-elem');
+  }, 2000);
 }
