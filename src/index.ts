@@ -32,9 +32,9 @@ new Promise((resolve, reject) => {
     }
   }, 2000);
 }).then((res: any) => {
+  console.log(res);
   // ─── DISPLAY LIST ELEMTS ────────────────────────────────────────────────────────
   const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
-  const category = document.querySelector('#category') as HTMLSelectElement;
   data.getGastos().then((res) => {
     showList(res, displayListGastos);
     showCategories(categories);
