@@ -31,28 +31,22 @@ new Promise((resolve, reject) => {
     }
   }, 2000);
 }).then((res: any) => {
-  const displayEmail = document.querySelector('.user') as HTMLElement;
-  displayEmail.innerText = res?.email;
-  //
   // ─── DISPLAY LIST ELEMTS ────────────────────────────────────────────────────────
-  //
   const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
   data.getGastos().then((res) => {
     showList(res, displayListGastos);
   });
 });
 
-//
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
-//
 formLogin.addEventListener('submit', showFormLogin);
 
 /**
  * Print User data
  */
-document.querySelector('.logout').addEventListener('click', logOut);
+// document.querySelector('.logout').addEventListener('click', logOut);
 
-function logOut() {
-  firebase.logout();
-  login.classList.remove('hidden-elem');
-}
+// function logOut() {
+//   firebase.logout();
+//   login.classList.remove('hidden-elem');
+// }

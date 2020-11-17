@@ -32,4 +32,29 @@
       }
     }
   }
+
+  &__main {
+    padding: 1rem 0;
+
+    p {
+      color: var(--grey);
+      font-size: 1em;
+    }
+
+    h2 {
+      font-size: 3em;
+      color: var(--dark);
+      margin: .5rem 0;
+      font-weight: bold;
+    }
+
+    button {
+      display: block;
+      padding: .6rem 1rem;
+      color: var(--blue);
+      background: var(--blue-light);
+      border: none;
+      border-radius: 7px;
+    }
+  }
 }
