@@ -7,6 +7,7 @@ import { showList } from './components/Gasto/listItems';
 // const Img = require('./assets/alimentacion.png');
 import Img from './assets/alimentacion.png';
 import { showFormLogin } from './components/Login';
+import { showCategories, categories } from './UI/listCategories';
 
 console.log(Img);
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
@@ -22,6 +23,8 @@ cancel.addEventListener('click', hiddenFormAddGasto);
 formAddNewGasto.addEventListener('submit', addNewGasto);
 
 user.authentication();
+
+showCategories(categories);
 
 new Promise((resolve, reject) => {
   setTimeout(() => {
