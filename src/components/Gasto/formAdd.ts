@@ -2,7 +2,6 @@ import { hiddenLoadinng, showLoading } from '../__shared/Loading';
 import { data } from '../../firebase/firebase';
 
 const elemAddGasto = document.querySelector('.add-gasto');
-const btn = document.querySelector('.btn__add') as HTMLButtonElement;
 const btnAddGasto = document.querySelector('.btn__addgasto') as HTMLButtonElement;
 
 export interface DataFormAddGastoI {

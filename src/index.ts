@@ -24,8 +24,6 @@ formAddNewGasto.addEventListener('submit', addNewGasto);
 
 user.authentication();
 
-showCategories(categories);
-
 new Promise((resolve, reject) => {
   setTimeout(() => {
     if (user.isAuth) {
@@ -36,8 +34,10 @@ new Promise((resolve, reject) => {
 }).then((res: any) => {
   // ─── DISPLAY LIST ELEMTS ────────────────────────────────────────────────────────
   const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
+  const category = document.querySelector('#category') as HTMLSelectElement;
   data.getGastos().then((res) => {
     showList(res, displayListGastos);
+    showCategories(categories);
   });
 });
 

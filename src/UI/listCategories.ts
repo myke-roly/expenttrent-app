@@ -9,6 +9,9 @@ export const categories = [
   { title: 'Comida', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
   { title: 'Mascotas', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
   { title: 'Ropa', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
+  { title: 'Comida', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
+  { title: 'Mascotas', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
+  { title: 'Ropa', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
 ];
 
 export function showCategories(categories: CategoryI[]): void {
@@ -17,6 +20,7 @@ export function showCategories(categories: CategoryI[]): void {
     const title = document.createElement('p') as HTMLParagraphElement;
     const imgContent = document.createElement('div') as HTMLElement;
     const img = document.createElement('img') as HTMLImageElement;
+
     title.textContent = category.title;
     img.src = category.img;
     imgContent.append(img);
@@ -27,6 +31,14 @@ export function showCategories(categories: CategoryI[]): void {
     card.append(imgContent);
     card.append(title);
 
+    card.addEventListener('click', () => filterByCategoty(category.title));
+
     listCategories.append(card);
   });
+}
+
+function filterByCategoty(category: string): void {
+  console.log('filtrar por: ' + category);
+
+  // TODO: mostrar lista de gastos dependiendo la categoria elegida.
 }
