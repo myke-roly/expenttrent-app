@@ -1,25 +1,35 @@
 import { hiddenElement, showElement } from '../../helpers/toggleElement';
 
 const modal = document.querySelector('.modal__addIngreso') as HTMLElement;
+const displayIngresos = document.querySelector('#ingresos') as HTMLElement;
 
 export function openModal(): void {
   showElement(modal);
 
   const btnAdd = document.querySelector('.modal__addIngreso--btn');
-  const monto = document.querySelector('#ingreso') as HTMLInputElement;
+  const newIngreso = document.querySelector('#ingreso') as HTMLInputElement;
 
-  btnAdd.addEventListener('click', () => addIngreso(Number(monto.value)));
+  btnAdd.addEventListener('click', () => addIngreso(Number(newIngreso.value)));
   const btn__closeModal = document.querySelector('.close__addIngreso');
 
   btn__closeModal.addEventListener('click', () => {
     hiddenElement(modal);
-    monto.value = '';
+    newIngreso.value = '';
   });
 }
 
-function addIngreso(monto: number): void {
-  if (monto > 0) {
-    // TODO: sumar nuevo gasto al total
-    return console.log(monto);
+function addIngreso(newIngreso: number): void {
+  // get ingresos previos
+  let ingresos: number = 0;
+
+  // sumarle el nuevo valor ingresado
+  if (newIngreso > 0) {
+    ingresos += newIngreso;
+    // guardar el nuevo valor en DB
+
+    displayIngresos.textContent = ingresos.toString() + ' $';
+    return;
   }
+
+  // TODO: showMessageError
 }
