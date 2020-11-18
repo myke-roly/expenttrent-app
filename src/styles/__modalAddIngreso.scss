@@ -26,13 +26,19 @@
 
   &--btn {
     color: white;
+    height: inherit;
+    padding: .5rem;
+    background: var(--blue) !important;
   }
 
   &--btnClose {
-    background: var(--grey);
-    border-radius: 50%;
+    width: 20px;
+    height: 20px;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -0.5rem;
+    background: white !important;
+    right: -0.5rem;
+    border-radius: 50% !important;
+    cursor: pointer;
   }
 }
