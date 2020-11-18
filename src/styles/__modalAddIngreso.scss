@@ -1,0 +1,38 @@
+.modal__addIngreso {
+  display: none;
+
+  &--content {
+    margin: .5rem 0;
+    max-width: 350px;
+    padding: .5rem 1rem;
+    background: var(--primary);
+    border-radius: 7px;
+    display: flex;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+
+  }
+
+  input {
+    width: 100%;
+    padding: .5rem 1rem;
+    border: 1px solid var(--grey);
+    background: transparent;
+    margin: .5rem 0;
+  }
+
+  &--btn {
+    color: white;
+  }
+
+  &--btnClose {
+    background: var(--grey);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

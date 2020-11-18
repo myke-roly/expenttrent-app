@@ -9,13 +9,19 @@ import Img from './assets/alimentacion.png';
 import { showFormLogin } from './components/Login';
 import { showCategories, categories } from './UI/listCategories';
 
-console.log(Img);
+import { hiddenModal, openModal } from './components/Gasto/modalAddIngreso';
+
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login');
 
 const formAddNewGasto = document.querySelector('.form__add-gasto') as HTMLFormElement;
 const cancel = document.querySelector('.cancel__add');
 const add = document.querySelector('.btn__add');
+
+const btn__openModal = document.querySelector('.open__addIngreso');
+const btn__closeModal = document.querySelector('.close__addIngreso');
+btn__openModal.addEventListener('click', openModal);
+btn__closeModal.addEventListener('click', hiddenModal);
 
 add.addEventListener('click', showFormAddGasto);
 cancel.addEventListener('click', hiddenFormAddGasto);
