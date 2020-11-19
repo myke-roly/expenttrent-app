@@ -1,21 +1,24 @@
+import { hiddenContent, hiddenElement, showElement } from '../../helpers/toggleElement';
 import firebase from '../firebase';
 
+const login = document.querySelector('.login') as HTMLElement;
+
 class User {
-  public isAuth: boolean;
   public userData;
   constructor() {
     this.userData = firebase.auth.currentUser;
   }
 
-  authentication() {
+  async authentication(): Promise<any> {
     firebase.auth.onAuthStateChanged((user: any) => {
-      if (!user) {
-        this.isAuth = false;
-        localStorage.removeItem('auth__task');
-        return -1;
+      if (user) {
+        hiddenContent(login);
+        hiddenElement(login);
+        console.log('show');
+      } else {
+        showElement(login);
+        console.log('hidden');
       }
-      this.isAuth = true;
-      localStorage.setItem('auth__task', user?.l);
     });
   }
 
