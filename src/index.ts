@@ -4,12 +4,12 @@ import { user } from './firebase/user';
 import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/Gasto/formAdd';
 import { data } from './firebase/firebase';
 import { showList } from './components/Gasto/listItems';
+import { openModal } from './components/Gasto/modalAddIngreso';
+import { displayIngeso } from './components/Gasto/modalAddIngreso';
 // const Img = require('./assets/alimentacion.png');
 import Img from './assets/alimentacion.png';
 import { showFormLogin } from './components/Login';
 import { showCategories, categories } from './UI/listCategories';
-
-import { openModal } from './components/Gasto/modalAddIngreso';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login');
@@ -42,6 +42,7 @@ new Promise((resolve, reject) => {
   data.getGastos().then((res) => {
     showList(res, displayListGastos);
     showCategories(categories);
+    displayIngeso();
   });
 });
 

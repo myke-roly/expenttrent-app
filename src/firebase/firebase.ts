@@ -46,8 +46,7 @@ interface ValuesFormAddI {
 
 class DataBase extends Firebase {
   async addNewGasto(values: ValuesFormAddI): Promise<any> {
-    const response = await this.db.collection('expences').add(values);
-    console.log(response);
+    await this.db.collection('expences').add(values);
   }
 
   async getGastos(): Promise<any> {
@@ -63,6 +62,24 @@ class DataBase extends Firebase {
       .catch((error) => console.log(error));
 
     return data;
+  }
+
+  async setIngreso(ingreso: number): Promise<any> {
+    await this.db.collection('ingreso').add({ ingreso });
+  }
+
+  async getIngreso() {
+    let data: any[] = [];
+    await this.db
+      .collection('ingreso')
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((snap) => {
+          data = [...data, snap.data()];
+        });
+      })
+      .catch((error) => console.log(error));
+    return data.reduce((acc, count) => acc + count.ingreso, 0);
   }
 }
 

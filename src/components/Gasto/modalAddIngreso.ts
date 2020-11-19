@@ -1,4 +1,5 @@
 import { hiddenElement, showElement } from '../../helpers/toggleElement';
+import { data } from '../../firebase/firebase';
 
 const modal = document.querySelector('.modal__addIngreso') as HTMLElement;
 const displayIngresos = document.querySelector('#ingresos') as HTMLElement;
@@ -18,20 +19,17 @@ function hiddenModal() {
   newIngreso.value = '';
 }
 
-let ingresos: number = 0;
 function addIngreso(newIngreso: number): void {
-  // get ingresos previos
-
   // sumarle el nuevo valor ingresado
   if (newIngreso > 0) {
-    ingresos += newIngreso;
-    // guardar el nuevo valor en DB
-
-    displayIngresos.textContent = ingresos.toString() + ' $';
+    data.setIngreso(newIngreso);
+    displayIngeso();
     hiddenModal();
-
     return;
   }
+}
 
-  // TODO: showMessageError
+export function displayIngeso() {
+  const ingresoElem = document.querySelector('#ingresos') as HTMLElement;
+  data.getIngreso().then((ingreso) => (ingresoElem.textContent = ingreso));
 }
