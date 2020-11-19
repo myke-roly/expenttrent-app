@@ -31,7 +31,7 @@ user.authentication();
 new Promise((resolve, reject) => {
   setTimeout(() => {
     if (user.isAuth) {
-      login.classList.add('hidden-elem');
+      // login.classList.add('hidden-elem');
       resolve(user.getUserData());
     }
   }, 2000);

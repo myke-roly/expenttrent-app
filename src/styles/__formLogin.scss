@@ -1,10 +1,15 @@
 .login {
   position: fixed;
-  display: none;
   top: 0;
   left: 0;
   width: 100vw;
   padding: 0 1rem;
   height: 100vh;
   background: #000;
+
+  &__error {
+    color: rgb(228, 106, 106);
+    font-size: .7rem;
+    margin: .5rem 0;
+  }
 }

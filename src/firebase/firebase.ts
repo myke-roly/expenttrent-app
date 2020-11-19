@@ -1,25 +1,28 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import UI from '../UI/listGasto';
+import { showTemporalErrorMessage } from '../UI/messageError';
 import { firebaseConfig } from './config';
 
 app.initializeApp(firebaseConfig);
 export class Firebase {
   public auth: firebase.auth.Auth;
   public db: firebase.firestore.Firestore;
+  public timestamp: firebase.firestore.FieldValue;
 
   constructor() {
     this.auth = app.auth();
     this.db = app.firestore();
+    this.timestamp = app.firestore.FieldValue.serverTimestamp();
   }
 }
 
 class Users extends Firebase {
-  singIn(email: string, password: string) {
-    this.auth.signInWithEmailAndPassword(email, password).catch((err) => {
-      UI.showTemporalErrorMessage(err?.message);
-    });
+  async singIn(email: string, password: string): Promise<any> {
+    return await this.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(() => 'success')
+      .catch((err) => err?.message);
   }
 
   async createNewAccount(email: string, password: string) {
@@ -56,6 +59,7 @@ class DataBase extends Firebase {
       .get()
       .then((snapshot) => {
         snapshot.forEach((snap) => {
+          console.log(snap.ref);
           data = [...data, snap.data()];
         });
       })
@@ -65,7 +69,18 @@ class DataBase extends Firebase {
   }
 
   async setIngreso(ingreso: number): Promise<any> {
-    await this.db.collection('ingreso').add({ ingreso });
+    await this.db
+      .collection('ingreso')
+      .add({ ingreso, createAt: this.timestamp })
+      .then((doc) => {
+        console.log(doc.id);
+        console.log(doc);
+      })
+      .catch((error) => {
+        if (error) {
+          showTemporalErrorMessage('No se pudo guardar!');
+        }
+      });
   }
 
   async getIngreso() {
