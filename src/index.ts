@@ -8,7 +8,7 @@ import { openModal } from './components/Gasto/modalAddIngreso';
 import { displayIngeso } from './components/Gasto/modalAddIngreso';
 import { showFormLogin } from './components/Login';
 import { showCategories, categories } from './UI/listCategories';
-import { hiddenContent, showElement } from './helpers/toggleElement';
+import { printCanvas } from './components/Gasto/test';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login') as HTMLElement;
@@ -28,6 +28,9 @@ formAddNewGasto.addEventListener('submit', addNewGasto);
 user.authentication();
 
 user.getUserData();
+
+const chart = printCanvas();
+console.log(chart);
 
 const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
 data.getGastos().then((res) => {
