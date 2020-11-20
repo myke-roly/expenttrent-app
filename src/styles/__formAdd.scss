@@ -17,6 +17,7 @@
   background: rgba(68, 68, 68, 0.404);
   display: none;
   animation: down .3s ease;
+  z-index: 10;
 
   .row {
     display: flex;

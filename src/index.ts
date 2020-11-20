@@ -8,7 +8,7 @@ import { openModal } from './components/Gasto/modalAddIngreso';
 import { displayIngeso } from './components/Gasto/modalAddIngreso';
 import { showFormLogin } from './components/Login';
 import { showCategories, categories } from './UI/listCategories';
-import { printCanvasByMonth } from './components/Canvas/Mouth';
+import { CanvasMonthI, printCanvasByMonth } from './components/Canvas/Mouth';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login') as HTMLElement;
@@ -29,15 +29,17 @@ user.authentication();
 
 user.getUserData();
 
-printCanvasByMonth();
-
 const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
-data.getGastos().then((res) => {
-  console.log(res);
-  showList(res, displayListGastos);
-  showCategories(categories);
-  displayIngeso();
-});
+export function start() {
+  data.getGastos().then((res) => {
+    displayIngeso();
+    showCategories(categories);
+    printCanvasByMonth(res);
+    showList(res, displayListGastos);
+  });
+}
+
+start();
 
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
 formLogin.addEventListener('submit', showFormLogin);

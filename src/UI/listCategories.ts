@@ -6,12 +6,21 @@ interface CategoryI {
 }
 
 export const categories = [
-  { title: 'Comida', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'Mascotas', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'Ropa', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
-  { title: 'Comida', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'Mascotas', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'Ropa', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
+  { title: 'comida', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
+  { title: 'internet', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
+  { title: 'ropa', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
+  { title: 'transporte', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
+  { title: 'deporte', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
+  { title: 'delivery', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
+  {
+    title: 'alquiler',
+    img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png',
+  },
+  { title: 'otros', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
+  {
+    title: 'alquiler',
+    img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png',
+  },
 ];
 
 export function showCategories(categories: CategoryI[]): void {

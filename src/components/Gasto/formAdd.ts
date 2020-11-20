@@ -1,5 +1,7 @@
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
 import { data } from '../../firebase/firebase';
+import { printCanvasByMonth } from 'components/Canvas/Mouth';
+import { start } from '../../';
 
 const elemAddGasto = document.querySelector('.add-gasto');
 const btnAddGasto = document.querySelector('.btn__addgasto') as HTMLButtonElement;
@@ -22,6 +24,7 @@ export function addNewGasto(e: Event): void {
   const { category, description, cant, price } = getValuesAddFormGasto();
   data.addNewGasto({ category, description, cant, price, finalPrice: cant * price });
   showLoading(btnAddGasto);
+  start();
 
   setTimeout(() => {
     hiddenLoadinng();
