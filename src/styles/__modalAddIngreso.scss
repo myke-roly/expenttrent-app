@@ -1,9 +1,12 @@
 .modal__addIngreso {
   display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
 
   &--content {
     margin: .5rem 0;
-    max-width: 350px;
+    max-width: 400px;
     padding: .5rem 1rem;
     background: var(--primary);
     border-radius: 7px;
@@ -12,8 +15,6 @@
     justify-content: center;
     align-items: center;
     position: relative;
-
-
   }
 
   input {

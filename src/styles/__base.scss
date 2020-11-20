@@ -18,6 +18,13 @@ a {
   text-decoration: none;
 }
 
+button {
+  border: none;
+  background: transparent;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .container {
   width: 90%;
   margin: auto;
