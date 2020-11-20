@@ -6,8 +6,8 @@ const pluguin = {
 
 const ctx = document.querySelector('#byMonth') as HTMLCanvasElement;
 ctx.getContext('2d');
-const title = document.querySelector('.canvas__title') as HTMLElement;
-const totalPrice = document.querySelector('.canvas__price') as HTMLSpanElement;
+const title = document.querySelector('.month-title') as HTMLElement;
+const totalPrice = document.querySelector('.month-price') as HTMLSpanElement;
 
 export interface CanvasMonthI {
   category: string;
@@ -49,7 +49,14 @@ export function printCanvasByMonth(res: any[], month: string = 'Noviembre'): Cha
           label: 'Filter by month',
           data: categories.map((category) => category.mount),
           fill: '#788',
-          backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)', 'rgb(255, 100, 86)', 'rgb(100, 205, 86)'],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(255, 50, 86)',
+            'rgb(100, 205, 86)',
+            'rgb(100, 0, 86)',
+          ],
           borderWidth: 1,
           borderDashOffset: 1,
         },

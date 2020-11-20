@@ -9,6 +9,7 @@ import { displayIngeso } from './components/Gasto/modalAddIngreso';
 import { showFormLogin } from './components/Login';
 import { showCategories, categories } from './UI/listCategories';
 import { CanvasMonthI, printCanvasByMonth } from './components/Canvas/Mouth';
+import { printCanvasByDay } from './components/Canvas/Day';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login') as HTMLElement;
@@ -35,6 +36,7 @@ export function start() {
     displayIngeso();
     showCategories(categories);
     printCanvasByMonth(res);
+    printCanvasByDay();
     showList(res, displayListGastos);
   });
 }

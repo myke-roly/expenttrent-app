@@ -100,11 +100,18 @@
               -- DISPLAY LIST ELEMENTS
               -->
           <div class="container">
-            <section class="canvas">
+            <section class="canvas canvas__month">
               <canvas id="byMonth" width="400" height="400"></canvas>
               <div class="canvas__details">
-                <h2 class="canvas__title"></h2>
-                <p>Total: <span class="canvas__price"></span> $</p>
+                <h2 class="month-title"></h2>
+                <p>Total: <span class="month-price"></span> $</p>
+              </div>
+            </section>
+            <section class="canvas canvas__day">
+              <canvas id="byDay" width="400" height="400"></canvas>
+              <div class="canvas__details">
+                <h2 class="day-title"></h2>
+                <p>Total: <span class="day-price"></span> $</p>
               </div>
             </section>
             <section class="list__gastos"></section>
