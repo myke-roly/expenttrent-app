@@ -10,6 +10,7 @@ import { showFormLogin } from './components/Login';
 import { showCategories, categories } from './UI/listCategories';
 import { CanvasMonthI, printCanvasByMonth } from './components/Canvas/Mouth';
 import { printCanvasByDay } from './components/Canvas/Day';
+import { printCanvasByCompare } from './components/Canvas/Compare';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login') as HTMLElement;
@@ -37,6 +38,7 @@ export function start() {
     showCategories(categories);
     printCanvasByMonth(res);
     printCanvasByDay();
+    printCanvasByCompare();
     showList(res, displayListGastos);
   });
 }

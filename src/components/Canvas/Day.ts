@@ -14,28 +14,6 @@ export interface CanvasDayI {
   mount: number;
 }
 
-// function fiterByDay(data: any[]): CanvasMonthI[] {
-//   let filterC: any = {};
-
-//   data.forEach((item) => {
-//     if (!filterC.hasOwnProperty(item.category)) {
-//       filterC[item.category] = { items: [] };
-//     }
-
-//     filterC[item.category].items.push({
-//       title: item.category,
-//       price: item.price,
-//     });
-//   });
-//   return Object.values(filterC)
-//     .map((items: any) => items)
-//     .map((item: any) => {
-//       return {
-//         category: item.items[0].title,
-//         mount: item.items.reduce((acc: number, count: any) => acc + count.price, 0),
-//       };
-//     });
-// }
 const days: CanvasDayI[] = [
   { day: 'lunes', mount: 750 },
   { day: 'martes', mount: 450 },
@@ -46,7 +24,7 @@ const days: CanvasDayI[] = [
   { day: 'domingo', mount: 0 },
 ];
 
-export function printCanvasByDay(day: string = 'Ultimos 7 days'): Chart {
+export function printCanvasByDay(day: string = 'Ultimos 7 dias'): Chart {
   const mychart: Chart = new Chart(ctx, {
     plugins: [pluguin, pluguin],
     type: 'bar',
