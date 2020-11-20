@@ -8,7 +8,7 @@ import { openModal } from './components/Gasto/modalAddIngreso';
 import { displayIngeso } from './components/Gasto/modalAddIngreso';
 import { showFormLogin } from './components/Login';
 import { showCategories, categories } from './UI/listCategories';
-import { printCanvas } from './components/Gasto/test';
+import { printCanvasByMonth } from './components/Canvas/Mouth';
 
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
 const login = document.querySelector('.login') as HTMLElement;
@@ -29,11 +29,11 @@ user.authentication();
 
 user.getUserData();
 
-const chart = printCanvas();
-console.log(chart);
+printCanvasByMonth();
 
 const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
 data.getGastos().then((res) => {
+  console.log(res);
   showList(res, displayListGastos);
   showCategories(categories);
   displayIngeso();

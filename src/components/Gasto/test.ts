@@ -15,14 +15,16 @@ export function printCanvas(): any {
       labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Setpiembre', 'Octubre', 'Novienbre', 'Diciembre'],
       datasets: [
         {
-          backgroundColor: '#333',
+          borderWidth: 20,
+          backgroundColor: '#FA875C',
           label: 'Bar Dataset',
-          data: [10, 15, 30, 15, 10, 15, 30, 50, 10, 15, 30, 50],
+          data: [10, 15, 30, 15, 10, 10, 30, 10, 50, 5, 30, 50],
         },
         {
-          backgroundColor: '#888',
-          label: 'Bar Dataset',
-          data: [10, 15, 30, 50, 10, 15, 30, 50, 10, 15, 30, 15],
+          backgroundColor: '#73F3FF',
+          label: 'Line Dataset',
+          data: [10, 15, 22, 50, 10, 15, 30, 35, 10, 15, 30, 15],
+          borderAlign: 'inner',
         },
       ],
     },
@@ -32,6 +34,13 @@ export function printCanvas(): any {
         mode: 'nearest',
         animationDuration: 400,
         intersect: true,
+      },
+      layout: {
+        padding: {},
+      },
+      title: {
+        display: true,
+        text: 'Gastos por mes',
       },
     },
   });

@@ -1,0 +1,26 @@
+.canvas {
+  background: var(--primary);
+  border-radius: 10px;
+  max-width: 450px;
+  margin: 1rem auto;
+  position: relative;
+
+  &__details {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #e0e0e0;
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 0 10px 10px;
+    color: #4a7d83;
+
+    h2,
+    span {
+      font-size: 1em;
+    }
+  }
+}

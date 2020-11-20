@@ -101,9 +101,15 @@
               -->
           <div class="container">
             <section class="list__gastos"></section>
-            <section class="canvas__content">
-              <canvas id="myChart" width="400" height="400"></canvas>
+            <section class="canvas">
+              <canvas id="byMonth" width="400" height="400"></canvas>
+              <div class="canvas__details">
+                <h2 class="canvas__title"></h2>
+                <p>Total: <span class="canvas__price"></span> $</p>
+              </div>
+              <!-- <div class="canvas__description">Filtrar por ano</div> -->
             </section>
+            <canvas id="myChart"></canvas>
           </div>
         </main>
       </div>
