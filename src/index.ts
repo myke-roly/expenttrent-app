@@ -12,6 +12,7 @@ import { showCategories, categories } from './UI/listCategories';
 import { CanvasMonthI, printCanvasByMonth } from './components/Canvas/Mouth';
 import { printCanvasByDay } from './components/Canvas/Day';
 import { printCanvasByCompare } from './components/Canvas/Compare';
+import { hiddenContent, hiddenElement, showElement } from './helpers/toggleElement';
 
 const login = document.querySelector('.login') as HTMLElement;
 const formLogin = document.querySelector('.login__form') as HTMLFormElement;
@@ -52,6 +53,19 @@ start();
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
 formLogin.addEventListener('submit', singIn);
 formRegister.addEventListener('submit', singUp);
+
+const loginLink = document.querySelector('#login-link') as HTMLElement;
+const registerLink = document.querySelector('#register-link') as HTMLElement;
+
+loginLink.addEventListener('click', () => {
+  hiddenElement(login);
+  showElement(register);
+});
+
+registerLink.addEventListener('click', () => {
+  hiddenElement(register);
+  showElement(login);
+});
 
 /**
  * Print User data

@@ -1,4 +1,4 @@
-import { hiddenContent } from '../../helpers/toggleElement';
+import { hiddenContent, showElement } from '../../helpers/toggleElement';
 import { showTemporalErrorMessage } from '../../UI/messageError';
 import { firebase } from '../../firebase';
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
