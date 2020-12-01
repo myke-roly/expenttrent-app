@@ -3,16 +3,16 @@ import { showTemporalErrorMessage } from '../../UI/messageError';
 import { firebase } from '../../firebase';
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
 
-interface DataLoginI {
+interface DataRegisterI {
   email: string;
   password: string;
 }
 
-const login = document.querySelector('.login') as HTMLElement;
+const register = document.querySelector('.register') as HTMLElement;
 
-function getValuesInputs(): DataLoginI {
-  const email = document.querySelector('#login-email') as HTMLInputElement,
-    password = document.querySelector('#login-password') as HTMLInputElement;
+function getValuesInputs(): DataRegisterI {
+  const email = document.querySelector('#register-email') as HTMLInputElement,
+    password = document.querySelector('#register-password') as HTMLInputElement;
 
   return {
     email: email.value,
@@ -20,24 +20,24 @@ function getValuesInputs(): DataLoginI {
   };
 }
 
-export function singIn(e: Event): void {
-  const btnLogin = document.querySelector('#login__submit') as HTMLButtonElement;
-  const formLogin = document.querySelector('.login__form') as HTMLButtonElement;
+export function singUp(e: Event): void {
+  const btnRegister = document.querySelector('#register__submit') as HTMLButtonElement;
+  const formRegister = document.querySelector('.register__form') as HTMLButtonElement;
 
   e.preventDefault();
   const { email, password } = getValuesInputs();
-  showLoading(btnLogin);
+  showLoading(btnRegister);
   setTimeout(() => {
     firebase
-      .singIn(email, password)
+      .createNewAccount(email, password)
       .then((data) => {
         if (data !== 'success') {
           const error = showTemporalErrorMessage(data);
-          formLogin.appendChild(error);
+          formRegister.appendChild(error);
           return;
         }
 
-        hiddenContent(login);
+        hiddenContent(register);
       })
       .catch((err) => console.log(err))
       .finally(() => hiddenLoadinng());

@@ -26,7 +26,16 @@ class Users extends Firebase {
   }
 
   async createNewAccount(email: string, password: string) {
-    return await this.auth.createUserWithEmailAndPassword(email, password);
+    return await this.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => 'success')
+      .catch((error) => {
+        if (error) {
+          console.log(error?.code);
+          console.log(error?.message);
+          return error?.message;
+        }
+      });
   }
 
   async logout() {
