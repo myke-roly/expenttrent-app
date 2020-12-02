@@ -84,5 +84,6 @@ document.querySelector('.logout').addEventListener('click', logOut);
 function logOut() {
   firebase.logout();
   data.removeGastos();
+  data.removeIngresos();
   login.classList.remove('hidden-elem');
 }
