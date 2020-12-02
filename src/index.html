@@ -15,13 +15,28 @@
           <h2 class="form__title">Iniciar Sesion</h2>
           <p class="form__desc">Bienvenido a TodoFire. Con esta app podras saber cuales son tus gastos y tener mejor control de tus finanzas.</p>
           <section class="form__input">
-            <input type="email" id="email" placeholder="Ingrese su email" required />
+            <input type="email" id="login-email" placeholder="Ingrese su email" required />
           </section>
           <section class="form__input">
-            <input type="password" id="password" placeholder="Ingrese su contraseña" required />
+            <input type="password" id="login-password" placeholder="Ingrese su contraseña" required />
           </section>
-          <button type="submit" class="form__btn">Iniciar Sesion</button>
-          <a href="#" class="form__link">Crear una cuenta</a>
+          <button type="submit" class="form__btn" id="login__submit">Iniciar Sesion</button>
+          <a href="#" class="form__link login__form--link" id="login-link">Crear una cuenta</a>
+        </form>
+      </div>
+
+      <div class="register">
+        <form class="form register__form">
+          <h2 class="form__title">Crear Cuenta</h2>
+          <p class="form__desc">Bienvenido a TodoFire. Con esta app podras saber cuales son tus gastos y tener mejor control de tus finanzas.</p>
+          <section class="form__input">
+            <input type="email" id="register-email" placeholder="Ingrese su email" required />
+          </section>
+          <section class="form__input">
+            <input type="password" id="register-password" placeholder="Ingrese su contraseña" required />
+          </section>
+          <button type="submit" class="form__btn" id="register__submit" >Crear Cuenta</button>
+          <a href="#" class="form__link" id="register-link">Iniciar Sesion</a>
         </form>
       </div>
 

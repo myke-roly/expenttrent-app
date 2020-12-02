@@ -1,4 +1,4 @@
-import { hiddenContent } from '../../helpers/toggleElement';
+import { hiddenContent, showElement } from '../../helpers/toggleElement';
 import { showTemporalErrorMessage } from '../../UI/messageError';
 import { firebase } from '../../firebase';
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
@@ -11,8 +11,8 @@ interface DataLoginI {
 const login = document.querySelector('.login') as HTMLElement;
 
 function getValuesInputs(): DataLoginI {
-  const email = document.querySelector('#email') as HTMLInputElement,
-    password = document.querySelector('#password') as HTMLInputElement;
+  const email = document.querySelector('#login-email') as HTMLInputElement,
+    password = document.querySelector('#login-password') as HTMLInputElement;
 
   return {
     email: email.value,
@@ -20,8 +20,8 @@ function getValuesInputs(): DataLoginI {
   };
 }
 
-export function showFormLogin(e: Event): void {
-  const btnLogin = document.querySelector('.form__btn') as HTMLButtonElement;
+export function singIn(e: Event): void {
+  const btnLogin = document.querySelector('#login__submit') as HTMLButtonElement;
   const formLogin = document.querySelector('.login__form') as HTMLButtonElement;
 
   e.preventDefault();
