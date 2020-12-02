@@ -1,6 +1,5 @@
 import './styles';
 import { firebase } from './firebase';
-import { user } from './firebase/user';
 import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/Gasto/formAdd';
 import { data } from './firebase/firebase';
 import { showList } from './components/Gasto/listItems';
@@ -32,12 +31,21 @@ cancel.addEventListener('click', hiddenFormAddGasto);
 // TODO: limpiar formulario
 formAddNewGasto.addEventListener('submit', addNewGasto);
 
-user.authentication();
-
-user.getUserData();
+firebase.auth.onAuthStateChanged((user: any) => {
+  if (user) {
+    hiddenContent(login);
+    hiddenElement(login);
+    console.log('show');
+    console.log(firebase.auth.currentUser.uid);
+    start();
+  } else {
+    showElement(login);
+    console.log('hidden');
+  }
+});
 
 const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
-export function start() {
+function start() {
   data.getGastos().then((res) => {
     displayIngeso();
     showCategories(categories);
@@ -48,10 +56,11 @@ export function start() {
   });
 }
 
-start();
-
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
-formLogin.addEventListener('submit', singIn);
+formLogin.addEventListener('submit', (e) => {
+  singIn(e);
+  start();
+});
 formRegister.addEventListener('submit', singUp);
 
 const loginLink = document.querySelector('#login-link') as HTMLElement;
@@ -74,5 +83,6 @@ document.querySelector('.logout').addEventListener('click', logOut);
 
 function logOut() {
   firebase.logout();
+  data.removeGastos();
   login.classList.remove('hidden-elem');
 }

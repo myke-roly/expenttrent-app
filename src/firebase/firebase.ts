@@ -44,6 +44,7 @@ class Users extends Firebase {
   }
 
   getUserData() {
+    console.log(this.auth.currentUser);
     return this.auth.currentUser;
   }
 }
@@ -57,8 +58,15 @@ interface ValuesFormAddI {
 }
 
 class DataBase extends Firebase {
+  private data: any[];
+  constructor() {
+    super();
+    this.data = [];
+  }
+
   async addNewGasto(values: ValuesFormAddI): Promise<any> {
-    await this.db.collection('expences').add({ ...values, createAt: this.timestamp });
+    const userId = this.auth.currentUser.uid;
+    await this.db.collection('expences').add({ ...values, createAt: this.timestamp, creatorAt: userId });
   }
 
   async getGastos(): Promise<any> {
@@ -67,17 +75,25 @@ class DataBase extends Firebase {
       .collection('expences')
       .get()
       .then((snapshot) => {
-        snapshot.forEach((snap) => (data = [...data, snap.data()]));
+        snapshot.forEach((snap) => {
+          data = [...data, snap.data()];
+          this.data = [...data, snap.data()];
+        });
       })
       .catch((error) => console.log(error));
 
-    return data;
+    return this.data;
+  }
+
+  removeGastos() {
+    this.data = [];
   }
 
   async setIngreso(ingreso: number): Promise<any> {
+    const userId = this.auth.currentUser.uid;
     await this.db
       .collection('ingreso')
-      .add({ ingreso, createAt: this.timestamp })
+      .add({ ingreso, createAt: this.timestamp, creatorAt: userId })
       .then((doc) => {
         console.log(doc.id);
         console.log(doc);
