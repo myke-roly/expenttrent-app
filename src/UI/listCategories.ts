@@ -24,6 +24,7 @@ export const categories = [
 ];
 
 export function showCategories(categories: CategoryI[]): void {
+  listCategories.innerHTML = '';
   categories.map((category: CategoryI, index: number | string) => {
     const card = document.createElement('div') as HTMLElement;
     const title = document.createElement('p') as HTMLParagraphElement;

@@ -27,18 +27,18 @@ function fiterByCategories(data: any[]): CanvasMonthI[] {
       price: item.price,
     });
   });
+
   return Object.values(filterC)
     .map((items: any) => items)
-    .map((item: any) => {
-      return {
-        category: item.items[0].title,
-        mount: item.items.reduce((acc: number, count: any) => acc + count.price, 0),
-      };
-    });
+    .map((item: any) => ({
+      category: item.items[0].title,
+      mount: item.items.reduce((acc: number, count: any) => acc + count.price, 0),
+    }));
 }
 
 export function printCanvasByMonth(res: any[], month: string = 'Noviembre'): Chart {
   const categories = fiterByCategories(res);
+
   const mychart: Chart = new Chart(ctx, {
     plugins: [pluguin, pluguin],
     type: 'pie',
@@ -49,14 +49,7 @@ export function printCanvasByMonth(res: any[], month: string = 'Noviembre'): Cha
           label: 'Filter by month',
           data: categories.map((category) => category.mount),
           fill: '#788',
-          backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)',
-            'rgb(255, 50, 86)',
-            'rgb(100, 205, 86)',
-            'rgb(100, 0, 86)',
-          ],
+          backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)', 'rgb(255, 50, 86)', 'rgb(100, 205, 86)', 'rgb(100, 0, 86)'],
           borderWidth: 1,
           borderDashOffset: 1,
         },

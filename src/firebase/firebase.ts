@@ -76,6 +76,7 @@ class DataBase extends Firebase {
   }
 
   async getGastos(): Promise<any> {
+    this.data = [];
     const userId = this.auth.currentUser.uid;
     await this.db
       .collection('expences')

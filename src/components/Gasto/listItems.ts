@@ -1,11 +1,13 @@
 import { DataFormAddGastoI } from './formAdd';
 import Img from '../../assets/alimentacion.png';
 
+const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
 const ListItemsElem = document.createElement('ul');
 ListItemsElem.classList.add('items__gastos');
 
-export function showList(items: DataFormAddGastoI[], parent: HTMLElement): void {
+export function showList(items: DataFormAddGastoI[]): void {
   let itemElem: string = '';
+
   items.map((item) => {
     itemElem += `
     <li class="item__gastos">
@@ -15,5 +17,5 @@ export function showList(items: DataFormAddGastoI[], parent: HTMLElement): void 
   });
 
   ListItemsElem.innerHTML = itemElem;
-  parent.appendChild(ListItemsElem);
+  displayListGastos.appendChild(ListItemsElem);
 }
