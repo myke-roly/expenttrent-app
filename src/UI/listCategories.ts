@@ -8,18 +8,18 @@ interface CategoryI {
 export const categories = [
   { title: 'comida', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
   { title: 'internet', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'ropa', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
+  { title: 'ropa', img: 'https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png' },
   { title: 'transporte', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
   { title: 'deporte', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
   { title: 'delivery', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
   {
     title: 'alquiler',
-    img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png',
+    img: 'https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png',
   },
-  { title: 'otros', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
+  { title: 'otros', img: 'https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png' },
   {
     title: 'alquiler',
-    img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png',
+    img: 'https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png',
   },
 ];
 
