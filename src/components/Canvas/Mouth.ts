@@ -24,16 +24,18 @@ function fiterByCategories(data: any[]): CanvasMonthI[] {
 
     filterC[item.category].items.push({
       title: item.category,
-      price: item.price,
+      price: item.finalPrice,
     });
   });
 
-  return Object.values(filterC)
+  const priceCategories = Object.values(filterC)
     .map((items: any) => items)
     .map((item: any) => ({
       category: item.items[0].title,
-      mount: item.items.reduce((acc: number, count: any) => acc + count.price, 0),
+      mount: item.items.reduce((acc: number, count: any) => acc + count?.price, 0),
     }));
+
+  return priceCategories;
 }
 
 export function printCanvasByMonth(res: any[], month: string = 'Noviembre'): Chart {
@@ -49,7 +51,14 @@ export function printCanvasByMonth(res: any[], month: string = 'Noviembre'): Cha
           label: 'Filter by month',
           data: categories.map((category) => category.mount),
           fill: '#788',
-          backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)', 'rgb(255, 50, 86)', 'rgb(100, 205, 86)', 'rgb(100, 0, 86)'],
+          backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            'rgb(255, 50, 86)',
+            'rgb(100, 205, 86)',
+            'rgb(100, 0, 86)',
+          ],
           borderWidth: 1,
           borderDashOffset: 1,
         },

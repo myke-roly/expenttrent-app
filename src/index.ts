@@ -89,7 +89,7 @@ registerLink.addEventListener('click', () => {
 });
 
 /**
- * Print User data
+ * Cerrar sesion
  */
 document.querySelector('.logout').addEventListener('click', logOut);
 
