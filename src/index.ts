@@ -9,8 +9,8 @@ import { singIn } from './components/Login';
 import { singUp } from './components/Register';
 import { showCategories, categories } from './UI/listCategories';
 import { printCanvasByMonth } from './components/Canvas/Mouth';
-import { printCanvasByDay } from './components/Canvas/Day';
-import { printCanvasByCompare } from './components/Canvas/Compare';
+// import { printCanvasByDay } from './components/Canvas/Day';
+// import { printCanvasByCompare } from './components/Canvas/Compare';
 import { hiddenContent, hiddenElement, showElement } from './helpers/toggleElement';
 
 const notEntries = document.querySelector('.not-entries');
@@ -58,8 +58,8 @@ function start() {
     }
     showCategories(categories);
     printCanvasByMonth(res);
-    printCanvasByDay();
-    printCanvasByCompare();
+    // printCanvasByDay();
+    // printCanvasByCompare();
     showList(res);
   });
 }
