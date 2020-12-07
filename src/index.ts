@@ -28,6 +28,8 @@ const add = document.querySelector('.btn__add');
 const btn__openModal = document.querySelector('.open__addIngreso');
 btn__openModal.addEventListener('click', openModal);
 
+const canvas = document.querySelector('.canvas');
+
 add.addEventListener('click', showFormAddGasto);
 cancel.addEventListener('click', hiddenFormAddGasto);
 // TODO: limpiar formulario
@@ -51,17 +53,21 @@ firebase.auth.onAuthStateChanged((user: any) => {
 
 function start() {
   displayIngeso();
-  data.getGastos().then((res) => {
-    if (res.length <= 0) {
-      notEntries.innerHTML = 'Sin entradas!';
-      return null;
-    }
-    showCategories(categories);
-    printCanvasByMonth(res);
-    // printCanvasByDay();
-    // printCanvasByCompare();
-    showList(res);
-  });
+  data
+    .getGastos()
+    .then((res) => {
+      if (res.length <= 0) {
+        notEntries.innerHTML = 'Sin entradas!';
+        canvas.innerHTML = '';
+        return null;
+      }
+      showCategories(categories);
+      printCanvasByMonth(res);
+      // printCanvasByDay();
+      // printCanvasByCompare();
+      showList(res);
+    })
+    .catch((err) => console.log(err));
 }
 
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────

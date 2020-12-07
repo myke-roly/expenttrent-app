@@ -38,7 +38,7 @@ function fiterByCategories(data: any[]): CanvasMonthI[] {
   return priceCategories;
 }
 
-export function printCanvasByMonth(res: any[], month: string = 'Noviembre'): Chart {
+export function printCanvasByMonth(res: any[], month: string = '2020'): Chart {
   const categories = fiterByCategories(res);
 
   const mychart: Chart = new Chart(ctx, {
