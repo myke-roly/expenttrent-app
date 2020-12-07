@@ -1,5 +1,15 @@
 import { DataFormAddGastoI } from './formAdd';
-import comida from '../../assets/icons/comida.png';
+import {
+  comida,
+  deporte as sport,
+  internet,
+  delivery,
+  ropa,
+  transporte,
+  otros,
+  alquiler,
+  mascota,
+} from '../../assets/';
 
 const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
 const ListItemsElem = document.createElement('ul');
@@ -9,7 +19,15 @@ export function showList(items: DataFormAddGastoI[]): void {
   let itemElem: string = '';
 
   const selectImg: any = {
-    comida: comida,
+    comida,
+    sport,
+    internet,
+    delivery,
+    ropa,
+    transporte,
+    otros,
+    alquiler,
+    mascota,
   };
 
   items.map((item) => {
