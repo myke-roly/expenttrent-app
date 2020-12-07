@@ -1,5 +1,5 @@
 .canvas {
-  background: var(--primary);
+  background: #e7e7e7;
   border-radius: 10px;
   max-width: 450px;
   margin: 1rem auto;
@@ -13,17 +13,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #e0e0e0;
+    background: #242424;
     padding: 1.2rem 1.5rem;
     border-radius: 0 0 10px 10px;
-    color: #4a7d83;
+    color: #cfcfcf;
 
     h2 {
       font-size: 1em;
     }
 
     p {
-      font-size: .7em;
+      font-size: 0.7em;
     }
   }
 }

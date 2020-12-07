@@ -1,5 +1,5 @@
 .header {
-  background: var(--gray-light);
+  // background: var(--gray-light);
 
   &__top {
     display: flex;
@@ -33,6 +33,7 @@
 
   &__main {
     padding: 1rem 0;
+    text-align: center;
 
     p {
       color: var(--grey);
@@ -40,47 +41,10 @@
     }
 
     h2 {
-      font-size: 3em;
+      font-size: 3.5em;
       color: var(--dark);
       margin: .5rem 0;
       font-weight: bold;
-    }
-  }
-
-  &__categories {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin: 1rem 0;
-
-    &--card {
-      width: 75px;
-      border-radius: 10px;
-      background: var(--primary);
-      box-shadow: 0 0 7px rgba(107, 107, 107, 0.486);
-      padding: .5rem;
-      cursor: pointer;
-
-      div {
-        width: 100%;
-        height: auto;
-        padding: .5rem .5rem 0 .5rem;
-        text-align: center;
-
-        img {
-          width: 80%;
-          object-fit: cover;
-        }
-      }
-
-      p {
-        text-align: center;
-        color: var(--grey);
-        font-size: .8em;
-        text-transform: capitalize;
-      }
     }
   }
 }

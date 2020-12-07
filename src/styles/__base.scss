@@ -6,7 +6,7 @@
 }
 
 body {
-  background: var(--grey);
+  background: var(--gray-light);
 }
 
 ul,
@@ -32,7 +32,11 @@ button {
 }
 
 .main {
-  background: rgba(238, 238, 238, 0.829);
-  box-shadow: 0 -2px 10px rgb(185, 185, 185);
-  border-radius: 20px 20px 0 0;
+  padding: 2rem 0;
+}
+
+.not-entries {
+  text-align: center;
+  font-size: 2rem;
+  color: #444;
 }

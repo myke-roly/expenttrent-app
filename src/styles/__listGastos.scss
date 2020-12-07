@@ -1,15 +1,32 @@
 .list__gastos {
   width: 100%;
+  margin-top: 2rem;
 
-  li {
+  .item__gastos--title {
+    background: #000000;
+
+    h2 {
+      text-transform: uppercase;
+      color: white;
+    }
+
+    p {
+      background: #000000 !important;
+      text-transform: uppercase !important;
+      color: white !important;
+    }
+  }
+
+  .item__gastos {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .7rem 1rem;
-    background: white;
+    // padding: 0.7rem 1rem;
+    border: 1px solid rgb(206, 206, 206);
     margin: 1.5rem 0;
     border-radius: 5px;
     color: #444;
+    padding-left: 1rem;
 
     h2 {
       font-size: 1em;
@@ -25,6 +42,16 @@
       height: 30px;
       object-fit: cover;
       border-radius: 10px;
+    }
+
+    p {
+      width: 80px;
+      background: #333333;
+      border: 1px solid #333333;
+      border-radius: 0 5px 5px 0;
+      color: white;
+      padding: 1rem 1rem;
+      text-align: center;
     }
   }
 }
