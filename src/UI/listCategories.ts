@@ -1,4 +1,13 @@
 const listCategories = document.querySelector('.header__categories') as HTMLElement;
+import comida from '../assets/icons/comida.png';
+import deporte from '../assets/icons/deporte.png';
+import internet from '../assets/icons/internet.png';
+import delivery from '../assets/icons/delivery.png';
+import ropa from '../assets/icons/ropa.png';
+import transporte from '../assets/icons/transporte.png';
+import otros from '../assets/icons/otros.png';
+import alquiler from '../assets/icons/alquiler.png';
+import mascota from '../assets/icons/mascota.png';
 
 interface CategoryI {
   title: string;
@@ -6,25 +15,20 @@ interface CategoryI {
 }
 
 export const categories = [
-  { title: 'comida', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'internet', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'ropa', img: 'https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png' },
-  { title: 'transporte', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'deporte', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'delivery', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  {
-    title: 'alquiler',
-    img: 'https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png',
-  },
-  { title: 'otros', img: 'https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png' },
-  {
-    title: 'alquiler',
-    img: 'https://cdn.iconscout.com/icon/free/png-256/fast-food-1851561-1569286.png',
-  },
+  { title: 'comida', img: comida },
+  { title: 'mascota', img: mascota },
+  { title: 'internet', img: internet },
+  { title: 'ropa', img: ropa },
+  { title: 'transporte', img: transporte },
+  { title: 'deporte', img: deporte },
+  { title: 'delivery', img: delivery },
+  { title: 'alquiler', img: alquiler },
+  { title: 'otros', img: otros },
 ];
 
 export function showCategories(categories: CategoryI[]): void {
   listCategories.innerHTML = '';
+
   categories.map((category: CategoryI, index: number | string) => {
     const card = document.createElement('div') as HTMLElement;
     const title = document.createElement('p') as HTMLParagraphElement;

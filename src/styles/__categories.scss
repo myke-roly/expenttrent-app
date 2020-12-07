@@ -1,0 +1,38 @@
+.header__categories {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 1rem 0;
+
+  &--card {
+    width: 150px;
+    border-radius: 7px;
+    background: #333333;
+    // background: linear-gradient(rgba(246,146,30,1),rgba(226,16,180,1));
+    box-shadow: 0 0 7px rgba(59, 59, 59, 0.486);
+    padding: .7rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+
+    div {
+      height: auto;
+      text-align: center;
+
+      img {
+        width: 20px;
+        object-fit: cover;
+      }
+    }
+
+    p {
+      text-align: center;
+      color: var(--primary);
+      font-size: .8em;
+      text-transform: capitalize;
+    }
+  }
+}
