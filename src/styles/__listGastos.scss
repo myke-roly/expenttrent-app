@@ -1,7 +1,23 @@
 .list__gastos {
   width: 100%;
+  margin-top: 2rem;
 
-  li {
+  .item__gastos--title {
+    background: #000000;
+
+    h2 {
+      text-transform: uppercase;
+      color: white;
+    }
+
+    p {
+      background: #000000 !important;
+      text-transform: uppercase !important;
+      color: white !important;
+    }
+  }
+
+  .item__gastos {
     display: flex;
     justify-content: space-between;
     align-items: center;

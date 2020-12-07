@@ -16,7 +16,10 @@ const ListItemsElem = document.createElement('ul');
 ListItemsElem.classList.add('items__gastos');
 
 export function showList(items: DataFormAddGastoI[]): void {
-  let itemElem: string = '';
+  let itemElem: string = `<li class="item__gastos item__gastos--title">
+    <h2>Gastos</h2>
+    <p>Precio</p>
+  </li>`;
 
   const selectImg: any = {
     comida,

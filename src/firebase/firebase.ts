@@ -80,6 +80,7 @@ class DataBase extends Firebase {
     const userId = this.auth.currentUser.uid;
     await this.db
       .collection('expences')
+      .orderBy('createAt')
       .get()
       .then((snapshot) => {
         snapshot.forEach((snap) => {
