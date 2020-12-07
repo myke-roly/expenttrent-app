@@ -99,6 +99,7 @@ class DataBase extends Firebase {
   }
 
   async setIngreso(ingreso: number): Promise<any> {
+    this.ingreso = [];
     const userId = this.auth.currentUser.uid;
     await this.db
       .collection('ingreso')
