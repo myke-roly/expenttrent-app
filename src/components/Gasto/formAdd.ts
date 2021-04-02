@@ -1,5 +1,5 @@
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
-import { data } from '../../firebase/firebase';
+import { data } from '../../firebase/';
 
 const elemAddGasto = document.querySelector('.add-gasto');
 const btnAddGasto = document.querySelector('.btn__addgasto') as HTMLButtonElement;

@@ -1,7 +1,8 @@
 import { hiddenContent, showElement } from '../../helpers/toggleElement';
 import { showTemporalErrorMessage } from '../../UI/messageError';
-import { firebase } from '../../firebase';
+import { user } from '../../firebase';
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
+import { Auth } from '../../constants';
 
 interface DataLoginI {
   email: string;
@@ -28,10 +29,10 @@ export function singIn(e: Event): void {
   const { email, password } = getValuesInputs();
   showLoading(btnLogin);
   setTimeout(() => {
-    firebase
+    user
       .singIn(email, password)
       .then((data) => {
-        if (data !== 'success') {
+        if (data !== Auth.SUCCESS) {
           const error = showTemporalErrorMessage(data);
           formLogin.appendChild(error);
           return;

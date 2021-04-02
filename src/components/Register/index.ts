@@ -1,7 +1,8 @@
 import { hiddenElement } from '../../helpers/toggleElement';
 import { showTemporalErrorMessage } from '../../UI/messageError';
-import { firebase } from '../../firebase';
+import { user } from '../../firebase';
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
+import { Register } from '../../constants';
 
 interface DataRegisterI {
   email: string;
@@ -28,10 +29,10 @@ export function singUp(e: Event): void {
   const { email, password } = getValuesInputs();
   showLoading(btnRegister);
   setTimeout(() => {
-    firebase
+    user
       .createNewAccount(email, password)
       .then((data) => {
-        if (data !== 'success') {
+        if (data !== Register.SUCCESS) {
           const error = showTemporalErrorMessage(data);
           formRegister.appendChild(error);
           return;

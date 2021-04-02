@@ -1,7 +1,6 @@
 import './styles';
-import { firebase } from './firebase';
+import { user, data } from './firebase';
 import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/Gasto/formAdd';
-import { data } from './firebase/firebase';
 import { removeList, showList } from './components/Gasto/listItems';
 import { openModal } from './components/Gasto/modalAddIngreso';
 import { displayIngeso } from './components/Gasto/modalAddIngreso';
@@ -39,7 +38,7 @@ formAddNewGasto.addEventListener('submit', (e) => {
   notEntries.innerHTML = '';
 });
 
-firebase.auth.onAuthStateChanged((user: any) => {
+user.auth.onAuthStateChanged((user: any) => {
   if (user) {
     hiddenContent(login);
     hiddenElement(login);
@@ -102,7 +101,7 @@ registerLink.addEventListener('click', () => {
 document.querySelector('.logout').addEventListener('click', logOut);
 
 function logOut() {
-  firebase.logout();
+  user.logout();
   data.removeGastos();
   data.removeIngresos();
   removeList();
