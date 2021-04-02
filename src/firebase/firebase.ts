@@ -26,7 +26,16 @@ class Users extends Firebase {
   }
 
   async createNewAccount(email: string, password: string) {
-    return await this.auth.createUserWithEmailAndPassword(email, password);
+    return await this.auth
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => 'success')
+      .catch((error) => {
+        if (error) {
+          console.log(error?.code);
+          console.log(error?.message);
+          return error?.message;
+        }
+      });
   }
 
   async logout() {
@@ -35,9 +44,14 @@ class Users extends Firebase {
   }
 
   getUserData() {
+    console.log(this.auth.currentUser);
     return this.auth.currentUser;
   }
 }
+
+/**
+ * DataBase
+ */
 
 interface ValuesFormAddI {
   description: string;
@@ -48,30 +62,50 @@ interface ValuesFormAddI {
 }
 
 class DataBase extends Firebase {
+  private data: any[];
+  private ingreso: any[];
+  constructor() {
+    super();
+    this.data = [];
+    this.ingreso = [];
+  }
+
   async addNewGasto(values: ValuesFormAddI): Promise<any> {
-    await this.db.collection('expences').add({ ...values, createAt: this.timestamp });
+    const userId = this.auth.currentUser.uid;
+    await this.db.collection('expences').add({ ...values, createAt: this.timestamp, creatorId: userId });
   }
 
   async getGastos(): Promise<any> {
-    let data: any[] = [];
+    this.data = [];
+    const userId = this.auth.currentUser.uid;
     await this.db
       .collection('expences')
+      .orderBy('createAt')
       .get()
       .then((snapshot) => {
-        snapshot.forEach((snap) => (data = [...data, snap.data()]));
+        snapshot.forEach((snap) => {
+          if (snap.data()?.creatorId === userId) {
+            this.data = [...this.data, snap.data()];
+          }
+        });
       })
       .catch((error) => console.log(error));
 
-    return data;
+    return this.data;
+  }
+
+  removeGastos() {
+    this.data = [];
   }
 
   async setIngreso(ingreso: number): Promise<any> {
+    const userId = this.auth.currentUser.uid;
     await this.db
       .collection('ingreso')
-      .add({ ingreso, createAt: this.timestamp })
+      .add({ ingreso, createAt: this.timestamp, creatorId: userId })
       .then((doc) => {
         console.log(doc.id);
-        console.log(doc);
+        // TODO: message success
       })
       .catch((error) => {
         if (error) {
@@ -81,17 +115,24 @@ class DataBase extends Firebase {
   }
 
   async getIngreso() {
-    let data: any[] = [];
+    const userId = this.auth.currentUser.uid;
     await this.db
       .collection('ingreso')
       .get()
       .then((snapshot) => {
         snapshot.forEach((snap) => {
-          data = [...data, snap.data()];
+          if (snap.data()?.creatorId === userId) {
+            this.ingreso = [...this.ingreso, snap.data()];
+          }
         });
       })
       .catch((error) => console.log(error));
-    return data.reduce((acc, count) => acc + count.ingreso, 0);
+
+    return this.ingreso.reduce((acc, count) => acc + count.ingreso, 0);
+  }
+
+  removeIngresos() {
+    this.ingreso = [];
   }
 }
 

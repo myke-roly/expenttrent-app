@@ -1,29 +1,26 @@
-const listCategories = document.querySelector('.header__categories') as HTMLElement;
+import { comida, deporte, internet, delivery, ropa, transporte, otros, alquiler, mascota } from '../assets/';
 
+const listCategories = document.querySelector('.header__categories') as HTMLElement;
 interface CategoryI {
   title: string;
   img: string;
 }
 
 export const categories = [
-  { title: 'comida', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'internet', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'ropa', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
-  { title: 'transporte', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'deporte', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  { title: 'delivery', img: 'https://assets.stickpng.com/thumbs/58af004d6c252499281ae910.png' },
-  {
-    title: 'alquiler',
-    img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png',
-  },
-  { title: 'otros', img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png' },
-  {
-    title: 'alquiler',
-    img: 'https://w7.pngwing.com/pngs/139/142/png-transparent-bulldog-paw-patrol-birthday-snout-birthday-holidays-orange-pet.png',
-  },
+  { title: 'comida', img: comida },
+  { title: 'mascota', img: mascota },
+  { title: 'internet', img: internet },
+  { title: 'ropa', img: ropa },
+  { title: 'transporte', img: transporte },
+  { title: 'deporte', img: deporte },
+  { title: 'delivery', img: delivery },
+  { title: 'alquiler', img: alquiler },
+  { title: 'otros', img: otros },
 ];
 
 export function showCategories(categories: CategoryI[]): void {
+  listCategories.innerHTML = '';
+
   categories.map((category: CategoryI, index: number | string) => {
     const card = document.createElement('div') as HTMLElement;
     const title = document.createElement('p') as HTMLParagraphElement;
