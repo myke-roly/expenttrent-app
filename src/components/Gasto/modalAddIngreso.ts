@@ -5,6 +5,7 @@ const modal = document.querySelector('.modal__addIngreso') as HTMLElement;
 const btnAdd = document.querySelector('.modal__addIngreso--btn');
 const newIngreso = document.querySelector('#ingreso') as HTMLInputElement;
 const btn__closeModal = document.querySelector('.close__addIngreso');
+const ingresoElem = document.querySelector('#ingresos') as HTMLElement;
 
 export function openModal(): void {
   showElement(modal);
@@ -20,6 +21,7 @@ function hiddenModal() {
 
 function addIngreso(newIngreso: number): void {
   // sumarle el nuevo valor ingresado
+
   if (newIngreso > 0) {
     data.setIngreso(newIngreso);
     displayIngeso();
@@ -29,6 +31,5 @@ function addIngreso(newIngreso: number): void {
 }
 
 export function displayIngeso() {
-  const ingresoElem = document.querySelector('#ingresos') as HTMLElement;
   data.getIngreso().then((ingreso) => (ingresoElem.textContent = ingreso));
 }

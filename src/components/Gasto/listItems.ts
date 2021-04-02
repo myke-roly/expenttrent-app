@@ -15,6 +15,10 @@ const displayListGastos = document.querySelector('.list__gastos') as HTMLElement
 const ListItemsElem = document.createElement('ul');
 ListItemsElem.classList.add('items__gastos');
 
+export function removeList() {
+  displayListGastos.innerHTML = '';
+}
+
 export function showList(items: DataFormAddGastoI[]): void {
   let itemElem: string = `<li class="item__gastos item__gastos--title">
     <h2>Gastos</h2>

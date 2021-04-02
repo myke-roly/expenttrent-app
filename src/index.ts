@@ -2,7 +2,7 @@ import './styles';
 import { firebase } from './firebase';
 import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/Gasto/formAdd';
 import { data } from './firebase/firebase';
-import { showList } from './components/Gasto/listItems';
+import { removeList, showList } from './components/Gasto/listItems';
 import { openModal } from './components/Gasto/modalAddIngreso';
 import { displayIngeso } from './components/Gasto/modalAddIngreso';
 import { singIn } from './components/Login';
@@ -52,6 +52,7 @@ firebase.auth.onAuthStateChanged((user: any) => {
 });
 
 function start() {
+  data.removeIngresos();
   displayIngeso();
   data
     .getGastos()
@@ -61,6 +62,7 @@ function start() {
         canvas.innerHTML = '';
         return null;
       }
+      notEntries.innerHTML = '';
       showCategories(categories);
       printCanvasByMonth(res);
       // printCanvasByDay();
@@ -103,5 +105,7 @@ function logOut() {
   firebase.logout();
   data.removeGastos();
   data.removeIngresos();
+  removeList();
+  notEntries.innerHTML = '';
   login.classList.remove('hidden-elem');
 }

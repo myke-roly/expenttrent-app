@@ -1,4 +1,4 @@
-import { hiddenContent } from '../../helpers/toggleElement';
+import { hiddenElement } from '../../helpers/toggleElement';
 import { showTemporalErrorMessage } from '../../UI/messageError';
 import { firebase } from '../../firebase';
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
@@ -37,7 +37,7 @@ export function singUp(e: Event): void {
           return;
         }
 
-        hiddenContent(register);
+        hiddenElement(register);
       })
       .catch((err) => console.log(err))
       .finally(() => hiddenLoadinng());
