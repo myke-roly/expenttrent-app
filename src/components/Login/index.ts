@@ -1,4 +1,4 @@
-import { hiddenContent, hiddenElement } from '../../helpers/toggleElement';
+import { hiddenElement } from '../../helpers/toggleElement';
 import { showTemporalErrorMessage } from '../../UI/messageError';
 import { user } from '../../firebase';
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
@@ -21,7 +21,7 @@ function getValuesInputs(): DataLoginI {
   };
 }
 
-export function singIn(e: Event): void {
+export async function singIn(e: Event): Promise<void> {
   e.preventDefault();
 
   const btnLogin = document.querySelector('#login__submit') as HTMLButtonElement;
@@ -29,20 +29,17 @@ export function singIn(e: Event): void {
 
   const { email, password } = getValuesInputs();
   showLoading(btnLogin);
-  setTimeout(() => {
-    user
-      .singIn(email, password)
-      .then((data) => {
-        if (data !== Auth.SUCCESS) {
-          const error = showTemporalErrorMessage(data);
-          formLogin.appendChild(error);
-          return;
-        }
+  await user
+    .singIn(email, password)
+    .then((data) => {
+      if (data !== Auth.SUCCESS) {
+        const error = showTemporalErrorMessage(data);
+        formLogin.appendChild(error);
+        return;
+      }
 
-        hiddenContent(login);
-        hiddenElement(login);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => hiddenLoadinng());
-  }, 1000);
+      hiddenElement(login);
+    })
+    .catch((err) => console.log(err))
+    .finally(() => hiddenLoadinng());
 }

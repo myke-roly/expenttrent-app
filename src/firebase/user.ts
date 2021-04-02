@@ -6,7 +6,7 @@ class User extends Firebase {
     return await this.auth
       .signInWithEmailAndPassword(email, password)
       .then((data: any) => {
-        localStorage.setItem(Session.AUTH_FIREBASE, data?.l);
+        localStorage.setItem(Session.AUTH_FIREBASE, data?.user.l);
 
         return Auth.SUCCESS;
       })
@@ -17,7 +17,7 @@ class User extends Firebase {
     return await this.auth
       .createUserWithEmailAndPassword(email, password)
       .then((data: any) => {
-        localStorage.setItem(Session.AUTH_FIREBASE, data?.l);
+        localStorage.setItem(Session.AUTH_FIREBASE, data?.user.l);
 
         return Register.SUCCESS;
       })

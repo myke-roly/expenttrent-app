@@ -10,7 +10,7 @@ import { showCategories, categories } from './UI/listCategories';
 import { printCanvasByMonth } from './components/Canvas/Mouth';
 // import { printCanvasByDay } from './components/Canvas/Day';
 // import { printCanvasByCompare } from './components/Canvas/Compare';
-import { hiddenContent, hiddenElement, showElement } from './helpers/toggleElement';
+import { hiddenElement, showElement } from './helpers/toggleElement';
 import { clearSession, isAuth } from './helpers/local-storage';
 
 const notEntries = document.querySelector('.not-entries');
@@ -30,9 +30,11 @@ btn__openModal.addEventListener('click', openModal);
 
 const canvas = document.querySelector('.canvas');
 
-console.log(isAuth);
+const splash = document.querySelector('.splash') as HTMLElement;
+
 if (isAuth) {
-  hiddenContent(login);
+  showElement(splash);
+  hiddenElement(login);
 }
 
 add.addEventListener('click', showFormAddGasto);
@@ -46,15 +48,14 @@ formAddNewGasto.addEventListener('submit', (e) => {
 user.auth.onAuthStateChanged((user: any) => {
   if (!user) {
     showElement(login);
-    console.log('hidden');
     return;
   }
-
   start();
 });
 
-function start() {
+async function start() {
   data.removeIngresos();
+  showElement(splash);
   displayIngeso();
   data
     .getGastos()
@@ -62,28 +63,25 @@ function start() {
       if (res.length <= 0) {
         notEntries.innerHTML = 'Sin entradas!';
         canvas.innerHTML = '';
-        return false;
+        hiddenElement(splash);
+        return;
       }
+
       notEntries.innerHTML = '';
       showCategories(categories);
       printCanvasByMonth(res);
       // printCanvasByDay();
       // printCanvasByCompare();
       showList(res);
+      hiddenElement(splash);
     })
     .catch((err) => console.log(err));
 }
 
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
-formLogin.addEventListener('submit', (e) => {
-  singIn(e);
-  start();
-});
+formLogin.addEventListener('submit', singIn);
 
-formRegister.addEventListener('submit', (e) => {
-  singUp(e);
-  start();
-});
+formRegister.addEventListener('submit', singUp);
 
 const loginLink = document.querySelector('#login-link') as HTMLElement;
 const registerLink = document.querySelector('#register-link') as HTMLElement;

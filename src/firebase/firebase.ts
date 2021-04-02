@@ -1,8 +1,6 @@
-import { Auth, Register } from '../constants';
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
-import { showTemporalErrorMessage } from '../UI/messageError';
 import { firebaseConfig } from './config';
 
 app.initializeApp(firebaseConfig);

@@ -10,7 +10,7 @@ interface ValuesFormAddI {
 }
 
 class DataBase extends Firebase {
-  private data: any[];
+  public data: any[];
   private ingreso: any[];
   constructor() {
     super();
@@ -19,13 +19,13 @@ class DataBase extends Firebase {
   }
 
   async addNewGasto(values: ValuesFormAddI): Promise<any> {
-    const userId = this.auth.currentUser.uid;
+    const userId = this.auth.currentUser?.uid;
     await this.db.collection('expences').add({ ...values, createAt: this.timestamp, creatorId: userId });
   }
 
   async getGastos(): Promise<any> {
     this.data = [];
-    const userId = this.auth.currentUser.uid;
+    const userId = this.auth.currentUser?.uid;
     await this.db
       .collection('expences')
       .orderBy('createAt')
@@ -39,7 +39,7 @@ class DataBase extends Firebase {
       })
       .catch((error) => console.log(error));
 
-    return this.data;
+    return this.data || 'loading';
   }
 
   removeGastos() {
@@ -48,7 +48,7 @@ class DataBase extends Firebase {
 
   async setIngreso(ingreso: number): Promise<any> {
     this.ingreso = [];
-    const userId = this.auth.currentUser.uid;
+    const userId = this.auth.currentUser?.uid;
     await this.db
       .collection('ingreso')
       .add({ ingreso, createAt: this.timestamp, creatorId: userId })
@@ -64,7 +64,7 @@ class DataBase extends Firebase {
   }
 
   async getIngreso() {
-    const userId = this.auth.currentUser.uid;
+    const userId = this.auth.currentUser?.uid;
     await this.db
       .collection('ingreso')
       .get()
