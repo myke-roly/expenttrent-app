@@ -1,18 +1,26 @@
 import { Firebase } from './firebase';
-import { Auth, Register } from '../constants';
+import { Auth, Register, Session } from '../constants';
 
 class User extends Firebase {
   async singIn(email: string, password: string): Promise<any> {
     return await this.auth
       .signInWithEmailAndPassword(email, password)
-      .then(() => Auth.SUCCESS)
+      .then((data: any) => {
+        localStorage.setItem(Session.AUTH_FIREBASE, data?.l);
+
+        return Auth.SUCCESS;
+      })
       .catch((err) => err?.message);
   }
 
   async createNewAccount(email: string, password: string) {
     return await this.auth
       .createUserWithEmailAndPassword(email, password)
-      .then(() => Register.SUCCESS)
+      .then((data: any) => {
+        localStorage.setItem(Session.AUTH_FIREBASE, data?.l);
+
+        return Register.SUCCESS;
+      })
       .catch((error) => {
         if (error) {
           console.log(error?.code);
@@ -33,4 +41,4 @@ class User extends Firebase {
   }
 }
 
-export const user = new User()
+export const user = new User();

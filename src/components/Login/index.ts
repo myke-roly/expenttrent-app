@@ -1,4 +1,4 @@
-import { hiddenContent, showElement } from '../../helpers/toggleElement';
+import { hiddenContent, hiddenElement } from '../../helpers/toggleElement';
 import { showTemporalErrorMessage } from '../../UI/messageError';
 import { user } from '../../firebase';
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
@@ -22,10 +22,11 @@ function getValuesInputs(): DataLoginI {
 }
 
 export function singIn(e: Event): void {
+  e.preventDefault();
+
   const btnLogin = document.querySelector('#login__submit') as HTMLButtonElement;
   const formLogin = document.querySelector('.login__form') as HTMLButtonElement;
 
-  e.preventDefault();
   const { email, password } = getValuesInputs();
   showLoading(btnLogin);
   setTimeout(() => {
@@ -39,6 +40,7 @@ export function singIn(e: Event): void {
         }
 
         hiddenContent(login);
+        hiddenElement(login);
       })
       .catch((err) => console.log(err))
       .finally(() => hiddenLoadinng());

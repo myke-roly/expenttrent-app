@@ -11,6 +11,7 @@ import { printCanvasByMonth } from './components/Canvas/Mouth';
 // import { printCanvasByDay } from './components/Canvas/Day';
 // import { printCanvasByCompare } from './components/Canvas/Compare';
 import { hiddenContent, hiddenElement, showElement } from './helpers/toggleElement';
+import { clearSession, isAuth } from './helpers/local-storage';
 
 const notEntries = document.querySelector('.not-entries');
 
@@ -29,25 +30,27 @@ btn__openModal.addEventListener('click', openModal);
 
 const canvas = document.querySelector('.canvas');
 
+console.log(isAuth);
+if (isAuth) {
+  hiddenContent(login);
+}
+
 add.addEventListener('click', showFormAddGasto);
 cancel.addEventListener('click', hiddenFormAddGasto);
 // TODO: limpiar formulario
 formAddNewGasto.addEventListener('submit', (e) => {
   addNewGasto(e);
-  start();
   notEntries.innerHTML = '';
 });
 
 user.auth.onAuthStateChanged((user: any) => {
-  if (user) {
-    hiddenContent(login);
-    hiddenElement(login);
-    console.log('show');
-    start();
-  } else {
+  if (!user) {
     showElement(login);
     console.log('hidden');
+    return;
   }
+
+  start();
 });
 
 function start() {
@@ -59,7 +62,7 @@ function start() {
       if (res.length <= 0) {
         notEntries.innerHTML = 'Sin entradas!';
         canvas.innerHTML = '';
-        return null;
+        return false;
       }
       notEntries.innerHTML = '';
       showCategories(categories);
@@ -106,5 +109,5 @@ function logOut() {
   data.removeIngresos();
   removeList();
   notEntries.innerHTML = '';
-  login.classList.remove('hidden-elem');
+  clearSession();
 }

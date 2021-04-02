@@ -1,5 +1,5 @@
-import { showTemporalErrorMessage } from "../UI/messageError";
-import { Firebase } from "./firebase";
+import { showTemporalErrorMessage } from '../UI/messageError';
+import { Firebase } from './firebase';
 
 interface ValuesFormAddI {
   description: string;
@@ -75,7 +75,7 @@ class DataBase extends Firebase {
           }
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.error(error));
 
     return this.ingreso.reduce((acc, count) => acc + count.ingreso, 0);
   }
