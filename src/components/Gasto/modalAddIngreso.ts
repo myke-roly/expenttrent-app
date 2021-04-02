@@ -1,5 +1,5 @@
 import { hiddenElement, showElement } from '../../helpers/toggleElement';
-import { data } from '../../firebase/firebase';
+import { data } from '../../firebase';
 
 const modal = document.querySelector('.modal__addIngreso') as HTMLElement;
 const btnAdd = document.querySelector('.modal__addIngreso--btn');

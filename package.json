@@ -6,14 +6,13 @@
   "scripts": {
     "dev": "webpack --watch",
     "test": "jest --env=jsdom --watch",
-    "serve": "webpack-dev-server",
+    "server": "webpack-dev-server",
     "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "-": "0.0.1",
     "chart.js": "^2.9.4",
     "dotenv": "^8.2.0",
     "firebase": "^7.24.0",

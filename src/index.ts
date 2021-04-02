@@ -1,7 +1,6 @@
 import './styles';
-import { firebase } from './firebase';
+import { user, data } from './firebase';
 import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/Gasto/formAdd';
-import { data } from './firebase/firebase';
 import { removeList, showList } from './components/Gasto/listItems';
 import { openModal } from './components/Gasto/modalAddIngreso';
 import { displayIngeso } from './components/Gasto/modalAddIngreso';
@@ -11,7 +10,8 @@ import { showCategories, categories } from './UI/listCategories';
 import { printCanvasByMonth } from './components/Canvas/Mouth';
 // import { printCanvasByDay } from './components/Canvas/Day';
 // import { printCanvasByCompare } from './components/Canvas/Compare';
-import { hiddenContent, hiddenElement, showElement } from './helpers/toggleElement';
+import { hiddenElement, showElement } from './helpers/toggleElement';
+import { clearSession, isAuth } from './helpers/local-storage';
 
 const notEntries = document.querySelector('.not-entries');
 
@@ -30,29 +30,32 @@ btn__openModal.addEventListener('click', openModal);
 
 const canvas = document.querySelector('.canvas');
 
+const splash = document.querySelector('.splash') as HTMLElement;
+
+if (isAuth) {
+  showElement(splash);
+  hiddenElement(login);
+}
+
 add.addEventListener('click', showFormAddGasto);
 cancel.addEventListener('click', hiddenFormAddGasto);
 // TODO: limpiar formulario
 formAddNewGasto.addEventListener('submit', (e) => {
   addNewGasto(e);
-  start();
   notEntries.innerHTML = '';
 });
 
-firebase.auth.onAuthStateChanged((user: any) => {
-  if (user) {
-    hiddenContent(login);
-    hiddenElement(login);
-    console.log('show');
-    start();
-  } else {
+user.auth.onAuthStateChanged((user: any) => {
+  if (!user) {
     showElement(login);
-    console.log('hidden');
+    return;
   }
+  start();
 });
 
-function start() {
+async function start() {
   data.removeIngresos();
+  showElement(splash);
   displayIngeso();
   data
     .getGastos()
@@ -60,28 +63,25 @@ function start() {
       if (res.length <= 0) {
         notEntries.innerHTML = 'Sin entradas!';
         canvas.innerHTML = '';
-        return null;
+        hiddenElement(splash);
+        return;
       }
+
       notEntries.innerHTML = '';
       showCategories(categories);
       printCanvasByMonth(res);
       // printCanvasByDay();
       // printCanvasByCompare();
       showList(res);
+      hiddenElement(splash);
     })
     .catch((err) => console.log(err));
 }
 
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
-formLogin.addEventListener('submit', (e) => {
-  singIn(e);
-  start();
-});
+formLogin.addEventListener('submit', singIn);
 
-formRegister.addEventListener('submit', (e) => {
-  singUp(e);
-  start();
-});
+formRegister.addEventListener('submit', singUp);
 
 const loginLink = document.querySelector('#login-link') as HTMLElement;
 const registerLink = document.querySelector('#register-link') as HTMLElement;
@@ -102,10 +102,10 @@ registerLink.addEventListener('click', () => {
 document.querySelector('.logout').addEventListener('click', logOut);
 
 function logOut() {
-  firebase.logout();
+  user.logout();
   data.removeGastos();
   data.removeIngresos();
   removeList();
   notEntries.innerHTML = '';
-  login.classList.remove('hidden-elem');
+  clearSession();
 }

@@ -1,7 +1,8 @@
 import { hiddenElement } from '../../helpers/toggleElement';
 import { showTemporalErrorMessage } from '../../UI/messageError';
-import { firebase } from '../../firebase';
+import { user } from '../../firebase';
 import { hiddenLoadinng, showLoading } from '../__shared/Loading';
+import { Register } from '../../constants';
 
 interface DataRegisterI {
   email: string;
@@ -20,26 +21,24 @@ function getValuesInputs(): DataRegisterI {
   };
 }
 
-export function singUp(e: Event): void {
+export async function singUp(e: Event): Promise<void> {
   const btnRegister = document.querySelector('#register__submit') as HTMLButtonElement;
   const formRegister = document.querySelector('.register__form') as HTMLButtonElement;
 
   e.preventDefault();
   const { email, password } = getValuesInputs();
   showLoading(btnRegister);
-  setTimeout(() => {
-    firebase
-      .createNewAccount(email, password)
-      .then((data) => {
-        if (data !== 'success') {
-          const error = showTemporalErrorMessage(data);
-          formRegister.appendChild(error);
-          return;
-        }
+  await user
+    .createNewAccount(email, password)
+    .then((data) => {
+      if (data !== Register.SUCCESS) {
+        const error = showTemporalErrorMessage(data);
+        formRegister.appendChild(error);
+        return;
+      }
 
-        hiddenElement(register);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => hiddenLoadinng());
-  }, 1000);
+      hiddenElement(register);
+    })
+    .catch((err) => console.log(err))
+    .finally(() => hiddenLoadinng());
 }
