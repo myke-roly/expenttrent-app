@@ -25,9 +25,6 @@ const formAddNewGasto = document.querySelector('.form__add-gasto') as HTMLFormEl
 const cancel = document.querySelector('.cancel__add');
 const add = document.querySelector('.btn__add');
 
-const btn__openModal = document.querySelector('.open__addIngreso');
-btn__openModal.addEventListener('click', openModal);
-
 const canvas = document.querySelector('.canvas');
 
 const splash = document.querySelector('.splash') as HTMLElement;

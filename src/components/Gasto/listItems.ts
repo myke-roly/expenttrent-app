@@ -19,11 +19,18 @@ export function removeList() {
   displayListGastos.innerHTML = '';
 }
 
+export interface Gasto {
+  description: string;
+  category: string;
+  cant: number;
+  price: number;
+  createAt: any;
+  creatorId: string;
+  finalPrice: number;
+}
+
 export function showList(items: DataFormAddGastoI[]): void {
-  let itemElem: string = `<li class="item__gastos item__gastos--title">
-    <h2>Gastos</h2>
-    <p>Precio</p>
-  </li>`;
+  let itemElem: string = '';
 
   const selectImg: any = {
     comida,
@@ -37,14 +44,24 @@ export function showList(items: DataFormAddGastoI[]): void {
     mascota,
   };
 
-  items.map((item) => {
+  items.map((item: Gasto) => {
     itemElem += `
     <li class="item__gastos">
-      <h2><img src=${selectImg[item.category]} /> ${item.description}</h2>
-      <p>$ ${item.price}</p>
+      <div class="item__gastos--info">
+        <img src=${selectImg[item.category]} />
+        <h2>
+          <p>${item.cant} - ${item.description}</p>
+          <small>${formattedDate(item.createAt.toMillis())}</small>
+        </h2>
+      </div>
+      <p class="final-price">$ ${item.finalPrice}</p>
     </li>`;
   });
 
   ListItemsElem.innerHTML = itemElem;
   displayListGastos.appendChild(ListItemsElem);
+}
+
+function formattedDate(timestamp: number) {
+  return new Date(timestamp).toLocaleDateString();
 }
