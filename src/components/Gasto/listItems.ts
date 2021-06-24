@@ -9,6 +9,7 @@ import {
   otros,
   alquiler,
   mascota,
+  servicios,
 } from '../../assets/';
 
 const displayListGastos = document.querySelector('.list__gastos') as HTMLElement;
@@ -42,6 +43,7 @@ export function showList(items: DataFormAddGastoI[]): void {
     otros,
     alquiler,
     mascota,
+    servicios,
   };
 
   items.map((item: Gasto) => {
