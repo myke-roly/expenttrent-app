@@ -1,4 +1,4 @@
-import { comida, deporte, internet, delivery, ropa, transporte, otros, alquiler, mascota } from '../assets/';
+import { comida, deporte, internet, delivery, ropa, transporte, otros, alquiler, mascota, servicios } from '../assets/';
 
 const listCategories = document.querySelector('.header__categories') as HTMLElement;
 interface CategoryI {
@@ -15,6 +15,7 @@ export const categories = [
   { title: 'deporte', img: deporte },
   { title: 'delivery', img: delivery },
   { title: 'alquiler', img: alquiler },
+  { title: 'servicios', img: servicios },
   { title: 'otros', img: otros },
 ];
 

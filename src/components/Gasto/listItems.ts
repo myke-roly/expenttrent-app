@@ -62,6 +62,6 @@ export function showList(items: DataFormAddGastoI[]): void {
   displayListGastos.appendChild(ListItemsElem);
 }
 
-function formattedDate(timestamp: number) {
+function formattedDate(timestamp: number): string {
   return new Date(timestamp).toLocaleDateString();
 }

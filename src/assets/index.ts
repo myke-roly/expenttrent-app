@@ -7,5 +7,6 @@ import transporte from '../assets/icons/transporte.png';
 import otros from '../assets/icons/otros.png';
 import alquiler from '../assets/icons/alquiler.png';
 import mascota from '../assets/icons/mascota.png';
+import servicios from '../assets/icons/servicios.png';
 
-export { comida, deporte, internet, delivery, ropa, transporte, otros, alquiler, mascota };
+export { comida, deporte, internet, delivery, ropa, transporte, otros, alquiler, mascota, servicios };
