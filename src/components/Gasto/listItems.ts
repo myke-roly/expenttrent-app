@@ -1,4 +1,4 @@
-import { DataFormAddGastoI } from './formAdd';
+import { filterByMonth, THIS_MONTH } from '../../helpers/filtered-month';
 import {
   comida,
   deporte as sport,
@@ -30,7 +30,7 @@ export interface Gasto {
   finalPrice: number;
 }
 
-export function showList(items: DataFormAddGastoI[]): void {
+export function showList(items: Gasto[], month: string = THIS_MONTH): void {
   let itemElem: string = '';
 
   const selectImg: any = {
@@ -47,17 +47,19 @@ export function showList(items: DataFormAddGastoI[]): void {
   };
 
   items.map((item: Gasto) => {
-    itemElem += `
-    <li class="item__gastos">
-      <div class="item__gastos--info">
-        <img src=${selectImg[item.category]} />
-        <h2>
-          <p>${item.cant} - ${item.description}</p>
-          <small>${formattedDate(item.createAt.toMillis())}</small>
-        </h2>
-      </div>
-      <p class="final-price">$ ${item.finalPrice}</p>
-    </li>`;
+    if (filterByMonth(item, month)) {
+      itemElem += `
+      <li class="item__gastos">
+        <div class="item__gastos--info">
+          <img src=${selectImg[item.category]} />
+          <h2>
+            <p>${item.cant} - ${item.description}</p>
+            <small>${formattedDate(item.createAt.toMillis())}</small>
+          </h2>
+        </div>
+        <p class="final-price">$ ${item.finalPrice}</p>
+      </li>`;
+    }
   });
 
   ListItemsElem.innerHTML = itemElem;

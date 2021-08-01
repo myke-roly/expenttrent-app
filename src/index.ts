@@ -1,15 +1,11 @@
 import './styles';
 import { user, data } from './firebase';
-import { showFormAddGasto, hiddenFormAddGasto, addNewGasto } from './components/Gasto/formAdd';
-import { removeList, showList } from './components/Gasto/listItems';
-import { openModal } from './components/Gasto/modalAddIngreso';
-import { displayIngeso } from './components/Gasto/modalAddIngreso';
+import { showFormAddGasto, hiddenFormAddGasto, addNewGasto, DataFormAddGastoI } from './components/Gasto/formAdd';
+import { Gasto, removeList, showList } from './components/Gasto/listItems';
 import { singIn } from './components/Login';
 import { singUp } from './components/Register';
 import { showCategories, categories } from './UI/listCategories';
 import { printCanvasByMonth } from './components/Canvas/Mouth';
-// import { printCanvasByDay } from './components/Canvas/Day';
-// import { printCanvasByCompare } from './components/Canvas/Compare';
 import { hiddenElement, showElement } from './helpers/toggleElement';
 import { clearSession, isAuth } from './helpers/local-storage';
 
@@ -26,8 +22,11 @@ const cancel = document.querySelector('.cancel__add');
 const add = document.querySelector('.btn__add');
 
 const canvas = document.querySelector('.canvas');
+const selectElement = document.querySelector('.canvas__months') as HTMLSelectElement;
 
 const splash = document.querySelector('.splash') as HTMLElement;
+
+let EXPENCES_DATA: Gasto[] | [] = [];
 
 if (isAuth) {
   showElement(splash);
@@ -53,10 +52,10 @@ user.auth.onAuthStateChanged((user: any) => {
 async function start() {
   data.removeIngresos();
   showElement(splash);
-  displayIngeso();
+
   data
     .getGastos()
-    .then((res) => {
+    .then((res: Gasto[]) => {
       if (res.length <= 0) {
         notEntries.innerHTML = 'Sin entradas!';
         canvas.innerHTML = '';
@@ -64,16 +63,26 @@ async function start() {
         return;
       }
 
+      EXPENCES_DATA = res;
       notEntries.innerHTML = '';
-      showCategories(categories);
+      // showCategories(categories, res);
       printCanvasByMonth(res);
-      // printCanvasByDay();
-      // printCanvasByCompare();
+
       showList(res);
       hiddenElement(splash);
     })
     .catch((err) => console.log(err));
 }
+
+/***
+ * Modify values to canvas by month
+ */
+
+selectElement.addEventListener('change', (e: Event): void => {
+  const valueMonth = (<HTMLSelectElement>e.target).value;
+  printCanvasByMonth(EXPENCES_DATA, valueMonth);
+  showList(EXPENCES_DATA, valueMonth);
+});
 
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
 formLogin.addEventListener('submit', singIn);

@@ -5,7 +5,6 @@ const modal = document.querySelector('.modal__addIngreso') as HTMLElement;
 const btnAdd = document.querySelector('.modal__addIngreso--btn');
 const newIngreso = document.querySelector('#ingreso') as HTMLInputElement;
 const btn__closeModal = document.querySelector('.close__addIngreso');
-const ingresoElem = document.querySelector('#ingresos') as HTMLElement;
 
 export function openModal(): void {
   showElement(modal);
@@ -24,12 +23,7 @@ function addIngreso(newIngreso: number): void {
 
   if (newIngreso > 0) {
     data.setIngreso(newIngreso);
-    displayIngeso();
     hiddenModal();
     return;
   }
-}
-
-export function displayIngeso() {
-  data.getIngreso().then((ingreso) => (ingresoElem.textContent = ingreso));
 }

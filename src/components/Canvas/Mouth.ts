@@ -1,4 +1,6 @@
 import { Chart } from 'chart.js';
+import { filterByMonth, THIS_MONTH } from '../../helpers/filtered-month';
+import { Gasto } from '../../components/Gasto/listItems';
 
 const pluguin = {
   afterDraw: (chartInstance: Chart, easing: Chart.Easing, options?: any) => {},
@@ -6,7 +8,7 @@ const pluguin = {
 
 const ctx = document.querySelector('#byMonth') as HTMLCanvasElement;
 ctx.getContext('2d');
-const title = document.querySelector('.month-title') as HTMLElement;
+const selectElement = document.querySelector('.canvas__months') as HTMLSelectElement;
 const totalPrice = document.querySelector('.month-price') as HTMLSpanElement;
 
 export interface CanvasMonthI {
@@ -14,7 +16,7 @@ export interface CanvasMonthI {
   mount: number;
 }
 
-function fiterByCategories(data: any[]): CanvasMonthI[] {
+function fiterByCategories(data: Gasto[], filterMonth: string): CanvasMonthI[] {
   let filterC: any = {};
 
   data.forEach((item) => {
@@ -22,10 +24,12 @@ function fiterByCategories(data: any[]): CanvasMonthI[] {
       filterC[item.category] = { items: [] };
     }
 
-    filterC[item.category].items.push({
-      title: item.category,
-      price: item.finalPrice,
-    });
+    if (filterByMonth(item, filterMonth)) {
+      filterC[item.category].items.push({
+        title: item.category,
+        price: item.finalPrice,
+      });
+    }
   });
 
   const priceCategories = Object.values(filterC)
@@ -38,8 +42,13 @@ function fiterByCategories(data: any[]): CanvasMonthI[] {
   return priceCategories;
 }
 
-export function printCanvasByMonth(res: any[], month: string = '2020'): Chart {
-  const categories = fiterByCategories(res);
+export function printCanvasByMonth(res: Gasto[], filterMonth: string = THIS_MONTH): Chart {
+  const categories = fiterByCategories(res, filterMonth);
+
+  const priceTotal = categories.reduce((acc: number, count: CanvasMonthI): number => acc + count.mount, 0);
+  selectElement.value = filterMonth;
+
+  totalPrice.textContent = priceTotal.toString();
 
   const mychart: Chart = new Chart(ctx, {
     plugins: [pluguin, pluguin],
@@ -48,7 +57,7 @@ export function printCanvasByMonth(res: any[], month: string = '2020'): Chart {
       labels: categories.map((category) => category.category),
       datasets: [
         {
-          label: 'Filter by month',
+          label: filterMonth,
           data: categories.map((category) => category.mount),
           fill: '#788',
           backgroundColor: [
@@ -58,6 +67,7 @@ export function printCanvasByMonth(res: any[], month: string = '2020'): Chart {
             'rgb(255, 50, 86)',
             'rgb(100, 205, 86)',
             'rgb(100, 0, 86)',
+            'rgb(190, 0, 1)',
           ],
           borderWidth: 1,
           borderDashOffset: 1,
@@ -87,10 +97,7 @@ export function printCanvasByMonth(res: any[], month: string = '2020'): Chart {
     },
   });
 
-  const priceTotal = categories.reduce((acc: number, count: CanvasMonthI): number => acc + count.mount, 0);
-
-  title.textContent = month;
-  totalPrice.textContent = priceTotal.toString();
+  mychart.update();
 
   return mychart;
 }

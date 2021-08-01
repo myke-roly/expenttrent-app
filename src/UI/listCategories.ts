@@ -1,3 +1,4 @@
+import { DataFormAddGastoI } from 'components/Gasto/formAdd';
 import { comida, deporte, internet, delivery, ropa, transporte, otros, alquiler, mascota, servicios } from '../assets/';
 
 const listCategories = document.querySelector('.header__categories') as HTMLElement;
@@ -12,14 +13,14 @@ export const categories = [
   { title: 'internet', img: internet },
   { title: 'ropa', img: ropa },
   { title: 'transporte', img: transporte },
-  { title: 'deporte', img: deporte },
+  { title: 'sport', img: deporte },
   { title: 'delivery', img: delivery },
   { title: 'alquiler', img: alquiler },
   { title: 'servicios', img: servicios },
   { title: 'otros', img: otros },
 ];
 
-export function showCategories(categories: CategoryI[]): void {
+export function showCategories(categories: CategoryI[], data: DataFormAddGastoI[]): void {
   listCategories.innerHTML = '';
 
   categories.map((category: CategoryI, index: number | string) => {
@@ -38,14 +39,13 @@ export function showCategories(categories: CategoryI[]): void {
     card.append(imgContent);
     card.append(title);
 
-    card.addEventListener('click', () => filterByCategoty(category.title));
+    card.addEventListener('click', () => filterByCategoty(category.title, data));
 
     listCategories.append(card);
   });
 }
 
-function filterByCategoty(category: string): void {
+function filterByCategoty(category: string, data: DataFormAddGastoI[]): void {
   console.log('filtrar por: ' + category);
-
-  // TODO: mostrar lista de gastos dependiendo la categoria elegida.
+  const filteredByCategory = data.filter((item) => item.category === category);
 }
