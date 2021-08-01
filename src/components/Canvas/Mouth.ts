@@ -35,8 +35,8 @@ function fiterByCategories(data: Gasto[], filterMonth: string): CanvasMonthI[] {
   const priceCategories = Object.values(filterC)
     .map((items: any) => items)
     .map((item: any) => ({
-      category: item.items[0].title,
-      mount: item.items.reduce((acc: number, count: any) => acc + count?.price, 0),
+      category: item.items[0]?.title,
+      mount: item.items?.reduce((acc: number, count: any) => acc + count?.price, 0),
     }));
 
   return priceCategories;
