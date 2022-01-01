@@ -1,5 +1,5 @@
 import { Chart } from 'chart.js';
-import { filterByMonth, THIS_MONTH } from '../../helpers/filtered-month';
+import { filterByMonth, THIS_MONTH, THIS_YEAR } from '../../helpers/filtered-month';
 import { Gasto } from '../../components/Gasto/listItems';
 
 const pluguin = {

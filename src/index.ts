@@ -23,7 +23,6 @@ const add = document.querySelector('.btn__add');
 
 const canvas = document.querySelector('.canvas');
 const filterByMonth = document.querySelector('.canvas__months') as HTMLSelectElement;
-const filterByYear = document.querySelector('.canvas__year') as HTMLSelectElement;
 
 const splash = document.querySelector('.splash') as HTMLElement;
 
@@ -79,16 +78,10 @@ async function start() {
  * Modify values to canvas by month
  */
 
- filterByMonth.addEventListener('change', (e: Event): void => {
+filterByMonth.addEventListener('change', (e: Event): void => {
   const valueMonth = (<HTMLSelectElement>e.target).value;
   printCanvasByMonth(EXPENCES_DATA, valueMonth);
   showList(EXPENCES_DATA, valueMonth);
-});
-
-filterByYear.addEventListener('change', (e: Event): void => {
-  const year = (<HTMLSelectElement>e.target).value;
-  printCanvasByMonth(EXPENCES_DATA, year);
-  showList(EXPENCES_DATA, year);
 });
 
 // ─── FORM LOGIN ─────────────────────────────────────────────────────────────────
